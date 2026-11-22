@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Demo · Data Viewer</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/demo.css">
+  <script type="module" src="/demo.js"></script>
+<script defer src="/web/workspace-nav.js"></script></head>
+<body>
+  <a href="#specimen" class="skip">Skip to demo</a>
+  <header class="top">
+    <div class="workspaceLinks"><a class="brand" href="/" aria-label="Data Viewer dashboard"><svg viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="currentColor"/><path d="m5 22 7-1 5-12 2 17 5-13 5-1" fill="none" stroke="white" stroke-width="2.4" stroke-linejoin="round"/></svg>Data Viewer</a><nav class="workspaceTabs" aria-label="Workspaces" data-current="/demo"></nav></div>
+    <div class="topTools"><a id="demoLibrary" href="/library">Open in library</a></div>
+  </header>
+  <main class="lab">
+    <nav class="families" id="families" aria-label="Demo categories"></nav>
+    <div class="labLayout">
+      <div class="labRail"><h2 id="familyName"></h2><nav id="choices" aria-labelledby="familyName"></nav></div>
+      <section id="specimen" tabindex="-1" aria-labelledby="demoTitle">
+        <h1 id="demoTitle"></h1>
+        <p id="instruction"></p>
+        <figure id="board" aria-labelledby="figureTitle">
+          <figcaption><strong id="figureTitle"></strong><span>Simulated lap · 0–20 s</span></figcaption>
+          <div id="graph"></div>
+          <div id="controls" hidden></div>
+        </figure>
+        <p id="status" role="status">Loading demo…</p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

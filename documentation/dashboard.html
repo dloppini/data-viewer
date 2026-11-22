@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard · Data Viewer</title><link rel="icon" href="data:,">
+<link rel="stylesheet" href="../web/style.css"><link rel="stylesheet" href="../web/dashboard.css">
+<script defer src="../web/workspace-nav.js"></script><script defer src="../web/dashboard.js"></script></head>
+<body class="guide">
+<a class="skip" href="#guideMain">Skip to guide</a>
+<header class="top"><div class="workspaceLinks"><a class="brand" href="#map" aria-label="Data Viewer dashboard"><svg viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="currentColor"/><path d="m5 22 7-1 5-12 2 17 5-13 5-1" fill="none" stroke="white" stroke-width="2.4" stroke-linejoin="round"/></svg>Data Viewer</a><nav class="workspaceTabs" aria-label="Workspaces" data-current="/"></nav></div>
+<div class="topTools"><label for="guideTheme">Theme</label><select id="guideTheme"><option value="light">Light</option><option value="dark">Dark</option></select><a class="download" href="../documentation/Data%20Viewer%20Manual.pdf" download>Download manual <span>PDF</span></a></div></header>
+<div class="guideShell"><aside class="contents"><h2>Manual</h2><nav id="chapters" aria-label="Manual chapters"><a href="#start">Quick start</a>
+<a href="#map">System map</a>
+<a href="#workbook-guide">Workbook and controls</a>
+<a href="#logs">Open a recording</a>
+<a href="#scatter">Configure scatter</a>
+<a href="#catalogue">Component catalogue and exports</a>
+<a href="#embed">Embed a plug-in</a>
+<a href="#parameters">Parameter and event reference</a>
+<a href="#service">Local service and analysis</a>
+<a href="#performance">Performance and evidence</a>
+<a href="#project">Repository and maintenance</a>
+<a href="#resources">Troubleshooting and references</a></nav><a class="sourceFile" href="../documentation/manual.md" download>Markdown source ↓</a></aside>
+<main class="manual" id="guideMain" tabindex="-1"><article id="start"><h1>Quick start</h1><p>Start in <code>C:\Code\Data Viewer</code>. Double-click <strong>Start Data Viewer.cmd</strong>. It starts the local Python service and opens the dashboard in your browser. On a fresh Windows installation it uses Python 3.12 to create the project environment and installs the packages in <code>requirements.txt</code>. Initial setup needs pip access. The installed viewer runs locally.</p>
+<table>
+<thead>
+<tr>
+<th>Workspace</th>
+<th>What to do there</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dashboard</td>
+<td>Read this guide, explore the system map, open the examples and download the manual.</td>
+</tr>
+<tr>
+<td>Workbook</td>
+<td>Inspect the simulated session or open your own CSV or Parquet recording.</td>
+</tr>
+<tr>
+<td>HTML library</td>
+<td>Try a single component, change its frame and plot style, and export an embeddable example.</td>
+</tr>
+<tr>
+<td>Demos</td>
+<td>Compare one chart, plotting engine, interaction or style at a time using synthetic telemetry.</td>
+</tr>
+</tbody>
+</table>
+<h3>Your first lap comparison</h3>
+<ol>
+<li>Open <strong>Workbook</strong> and choose <strong>Timing Story</strong>. Pick the active and reference laps. A negative delta means the active lap reached the same distance earlier.</li>
+<li>Switch to <strong>G–G scatter plot</strong>. Click a point to inspect the two accelerations. Right-click the plot or use <strong>Scatter settings</strong> to select other channels.</li>
+<li>Set X to steering and Y to throttle. Add a brake gate below 5%, then choose <strong>Apply</strong>. The matching sample count changes. Each plotted point still identifies its original lap and sample.</li>
+<li>Choose <strong>Open in library</strong> to inspect that component independently. Try a different frame, then a different plot style. <strong>Download HTML example</strong> saves the current displayed data and renderer in one file.</li>
+</ol>
+<p>To work with your own recording, open <strong>Workbook → Open log</strong>. You can also drop a file on the same launcher. It opens the workbook directly with the imported log. Closing the console that owns a running service stops that instance. Launch again to reopen the dashboard.</p>
+</article>
+<article id="map"><h1>System map</h1><p>The workbook is a host for reusable HTML elements. Python prepares data from a recording or simulated lap. The element draws the result and reports picks and zoom changes to its host. An offline XY element can also filter small arrays of named channels itself.</p>
+<h3>Stages</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Library or file</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recording</td>
+<td>CSV or Parquet</td>
+<td>The source file stays on disk. Session time and numeric channels are the inputs.</td>
+</tr>
+<tr>
+<td>Column store</td>
+<td>Polars and PyArrow · <code>data_viewer/logstore.py</code></td>
+<td>Stream CSV into a reusable Parquet cache. Index row groups by time. Native Parquet enters at the indexing step.</td>
+</tr>
+<tr>
+<td>Time window</td>
+<td>PyArrow and NumPy · <code>Log.window</code></td>
+<td>Read the selected channel and time from overlapping groups. Keep extrema when reducing an overview.</td>
+</tr>
+<tr>
+<td>XY query</td>
+<td>PyArrow and NumPy · <code>data_viewer/scatter.py</code></td>
+<td>Project the needed columns, apply gates, count matches and retain bounded samples with source IDs.</td>
+</tr>
+<tr>
+<td>Demo laps</td>
+<td>NumPy · <code>data_viewer/telemetry.py</code></td>
+<td>Supply four reproducible laps, a circuit and sectors to the demonstration worksheets.</td>
+</tr>
+<tr>
+<td>Analysis</td>
+<td>NumPy and Plotly.py · <code>data_viewer/charts.py</code></td>
+<td>Calculate deltas, statistics, distributions and specialist figures from the simulated samples.</td>
+</tr>
+<tr>
+<td>Inline channels</td>
+<td>JavaScript · <code>projectScatter</code></td>
+<td>Read named arrays supplied to an XY element. Apply the query locally and retain original row identities.</td>
+</tr>
+<tr>
+<td>Parameters</td>
+<td>HTML attributes or a host menu</td>
+<td>Describe the data query, axes, marks, frame and visible controls.</td>
+</tr>
+<tr>
+<td>Renderer</td>
+<td>Canvas 2D and HTML · <code>web/telemetry-elements.js</code></td>
+<td>Draw charts, build report tables and update instruments. Combine plot updates scheduled for the same animation frame.</td>
+</tr>
+<tr>
+<td>Host event</td>
+<td>DOM events · optional Qt WebChannel</td>
+<td>Send the pick, visible range or menu request to the host. A native application can share one bridge across its plots.</td>
+</tr>
+</tbody>
+</table>
+<h3>Workflows</h3>
+<table>
+<thead>
+<tr>
+<th>Workflow</th>
+<th>Route</th>
+<th>What to observe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Large-log scatter</td>
+<td>Recording → Column store → XY query → Renderer</td>
+<td>Gates evaluate original rows. The browser receives up to 3,200 points per source.</td>
+</tr>
+<tr>
+<td>Time-history zoom</td>
+<td>Recording → Column store → Time window → Renderer</td>
+<td>An imported trace requests more detail for the selected time window.</td>
+</tr>
+<tr>
+<td>Offline scatter</td>
+<td>Parameters → Inline channels → Renderer → Host event</td>
+<td>The HTML example can draw, zoom and pick directly from disk.</td>
+</tr>
+<tr>
+<td>Demo worksheet</td>
+<td>Demo laps → Analysis → Renderer</td>
+<td>Each worksheet calculates the quantity appropriate to its question.</td>
+</tr>
+<tr>
+<td>Appearance edit</td>
+<td>Parameters → Renderer</td>
+<td>Changing marker size or axis limits reuses the displayed arrays.</td>
+</tr>
+<tr>
+<td>Sample pick</td>
+<td>Renderer → Host event</td>
+<td>The scatter selection layer repaints the marker and returns the original row ID.</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="workbook-guide"><h1>Workbook and controls</h1><p>The session and worksheet tree sit beside the central plot. The simulated session has four laps at 100 Hz. The active and reference selectors control comparisons where supported. The inspector below the worksheet shows values at the cursor. On time history, switch between elapsed time and lap distance.</p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Worksheet or action</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Where did I lose time?</td>
+<td>Timing Story and sector times</td>
+<td>Compare elapsed times at equal distance, then identify the sector contributing to the delta.</td>
+</tr>
+<tr>
+<td>How did the car use grip?</td>
+<td>G–G scatter and braking scatter</td>
+<td>Inspect the relationship between lateral and longitudinal acceleration, optionally within a gate.</td>
+</tr>
+<tr>
+<td>How often did a value occur?</td>
+<td>Speed or suspension histogram</td>
+<td>Read the fraction of samples in each bin. Damper velocity uses positive for bump and negative for rebound.</td>
+</tr>
+<tr>
+<td>Where on the circuit?</td>
+<td>Track report, rainbow map and GPS driving lines</td>
+<td>Inspect sector minima, speed along the centreline or simulated positions in local coordinates.</td>
+</tr>
+<tr>
+<td>What varies with frequency?</td>
+<td>FFT and frequency response</td>
+<td>Read the spectrum of a simulated channel or the gain and phase of the suspension-rig example.</td>
+</tr>
+<tr>
+<td>Which values need exact comparison?</td>
+<td>Statistics, sectors and acceleration reports</td>
+<td>Read the numeric result directly from the table.</td>
+</tr>
+</tbody>
+</table>
+<h3>Inspect a plot</h3>
+<p>Click a point or focus the canvas and use the arrow keys. Left and Right step through samples; Up and Down change series. Drag horizontally to zoom. Hold Shift and drag to pan a zoomed plot. The reset control restores the full range. An imported time trace requests a new window after zoom. XY zoom operates on the currently displayed points.</p>
+<p>Choose <strong>Frame</strong> for the container and <strong>Plot style</strong> for lines, markers, bars and grid. Fine uses thin marks, Bold increases weight, and Patterned varies the marks and grid. Switch the theme to compare contrast. The library lets you inspect the same object in isolation.</p>
+</article>
+<article id="logs"><h1>Open a recording</h1><p>Use <strong>Workbook → Open log → Browse</strong>, paste the local path, or drop the recording onto the launcher. Wait for the filename and sample count to appear. Select a channel and a time interval in seconds. <strong>Full range</strong> restores the original interval.</p>
+<h3>File contract</h3>
+<p>CSV uses UTF-8, a comma delimiter, a decimal point and one header row with distinct numeric columns. Include finite, non-decreasing session time in <code>time_s</code> and at least one numeric channel. Continue session time across lap boundaries. Missing channel values are allowed. Include units in names when the file has no independent unit metadata.</p>
+<pre><code class="language-csv">time_s,speed_kmh,steering_deg,throttle_pct,brake_pct
+0.00,83.5,-12,72,0
+0.01,84.0,-10,75,0
+0.02,83.8,-8,68,3
+</code></pre>
+<p>Parquet also needs numeric <code>time_s</code> and at least one numeric channel. Other column types are ignored. Row-group statistics let the reader reject groups outside the requested interval. For missing statistics, it reads timestamps to establish the bounds.</p>
+<h3>What the loader does</h3>
+<p>Polars streams CSV into a temporary compressed Parquet file. The loader checks timestamps before atomically publishing the completed cache. Reopening the same unchanged CSV reuses that cache. A native Parquet recording is read in place. The cache lives in <code>.cache/</code>; it can be removed when the viewer is closed. The next CSV open then rebuilds it.</p>
+<p>A time-history overview reads time and the selected channel. Large windows retain minima and maxima per display bin and preserve breaks for missing data. Small windows return original samples. To examine a narrower population in an XY scatter, change <strong>From / To</strong> or the sample gates. Imported recordings support time history and XY scatter. The specialist worksheets use the simulated session's known channel and sector definitions.</p>
+</article>
+<article id="scatter"><h1>Configure scatter</h1><p>Open <strong>Scatter settings</strong> from the plot header, right-click the plot, or press <strong>Shift+F10</strong> with the canvas focused. The nine scatter worksheets use the same editor. In an imported recording, set <strong>Plot</strong> to <strong>Scatter</strong> first.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>How it affects the plot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X and Y channels</td>
+<td>Choose the quantities to compare. Axis labels follow the selected channels.</td>
+</tr>
+<tr>
+<td>Scale and limits</td>
+<td>Select linear or logarithmic independently on each axis. Leave both limits blank for automatic bounds. Manual limits must increase. Log limits and displayed coordinates must be positive.</td>
+</tr>
+<tr>
+<td>Sample gates</td>
+<td>Add up to twelve conditions. A sample must pass every condition. Available comparisons are less than, at most, equal, unequal, at least and greater than.</td>
+</tr>
+<tr>
+<td>Colour or size by channel</td>
+<td>Encode another measurement per point. Density uses colour for the number of original samples per cell.</td>
+</tr>
+<tr>
+<td>Shape, radius and opacity</td>
+<td>Change the appearance of displayed points. A blank numeric field uses the current plot style.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Apply</strong> commits the pending changes together. <strong>Cancel</strong> discards them. A channel or gate change requests a new projection. A visual-only edit reuses the displayed data. An unchanged Apply produces no new scatter request or full draw.</p>
+<h3>Inspect throttle on corner exit</h3>
+<p>Use steering on X and throttle on Y. Add a brake gate below 5% to exclude samples with appreciable braking, then use speed for colour. This isolates low-brake samples. To identify corner exits specifically, add a phase channel or other criteria from the recording. Click a marker to inspect its values. For the simulated lap, its ID and timestamp lead back to the source.</p>
+<p>The matching count refers to eligible original rows. The displayed count can be smaller because the scatter projection retains up to 3,200 points per source. A picked ID identifies a displayed source row. A fitted curve or bin mean is a derived value.</p>
+</article>
+<article id="catalogue"><h1>Component catalogue and exports</h1><p>The HTML library contains 46 elements. Choose a component and inspect its appearance, selection and zoom behaviour before embedding it. The names below take the prefix <code>dv-</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Element names</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Traces and base XY</td>
+<td><code>trace</code>, <code>history</code>, <code>scatter</code>, <code>steer-throttle</code>, <code>timing</code>, <code>outing</code>, <code>colour</code>, <code>bits</code></td>
+</tr>
+<tr>
+<td>Scatter analysis</td>
+<td><code>scatter-density</code>, <code>scatter-colour</code>, <code>scatter-size</code>, <code>scatter-gate</code>, <code>scatter-average</code>, <code>scatter-linear</code>, <code>scatter-polynomial</code></td>
+</tr>
+<tr>
+<td>Distributions and analysis</td>
+<td><code>hist</code>, <code>hist-colour</code>, <code>susp</code>, <code>susp-zones</code>, <code>susp-four</code>, <code>fft</code>, <code>frf</code>, <code>mix</code>, <code>mix-trend</code></td>
+</tr>
+<tr>
+<td>Maps and replay</td>
+<td><code>track</code>, <code>rainbow</code>, <code>pos</code>, <code>gps</code>, <code>race</code>, <code>rainbow-compare</code>, <code>telemetry-position</code>, <code>telemetry-gps</code></td>
+</tr>
+<tr>
+<td>Summary charts</td>
+<td><code>sector-chart</code>, <code>channel-chart</code></td>
+</tr>
+<tr>
+<td>Tables</td>
+<td><code>samples</code>, <code>sectors</code>, <code>stats</code>, <code>accel</code>, <code>status</code></td>
+</tr>
+<tr>
+<td>Instruments</td>
+<td><code>gauges</code>, <code>dial</code>, <code>meter</code>, <code>steering</code>, <code>gear</code>, <code>rpm</code>, <code>lamp</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Choose an export</h3>
+<p><strong>Use in HTML</strong> shows markup for the selected element. <strong>Download JS library</strong> saves the shared renderer. <strong>Download data JSON</strong> saves the displayed payload. Serve the renderer and data beside your page when using a JSON URL. <strong>Download HTML example</strong> packages the displayed data, renderer and appearance into a single offline snapshot.</p>
+<p>A snapshot contains the selected points and channels. To switch to channels that were absent at export, supply a named column store or a queryable service. In <strong>Demos</strong>, the engine comparisons use the same speed trace in Plotly.js, BokehJS and uPlot. Interaction demos isolate zoom, pan, picking and A/B measurement. Style demos isolate the frame using the same static trace.</p>
+</article>
+<article id="embed"><h1>Embed a plug-in</h1><p>Copy <code>web/telemetry-elements.js</code> beside your HTML and load it once. A page can host multiple chart, table and instrument tags. The host can be a desktop browser or an embedded web view. The optional example menus belong to the workbook and Qt host. Use them when they fit your application.</p>
+<h3>Working offline example</h3>
+<p>This element plots throttle against steering and accepts only rows where brake is less than five. All arrays share the same row index. Add a stable <code>source</code> and optional <code>ids</code>, <code>timeChannel</code> or <code>distanceChannel</code> to link the selection to the original recording.</p>
+<pre><code class="language-html">&lt;script defer src=&quot;telemetry-elements.js&quot;&gt;&lt;/script&gt;
+&lt;dv-scatter frame=&quot;clean&quot; plot-style=&quot;fine&quot; hide-tools
+  query='{&quot;x&quot;:&quot;steer&quot;,&quot;y&quot;:&quot;throttle&quot;,&quot;gates&quot;:[
+    {&quot;channel&quot;:&quot;brake&quot;,&quot;op&quot;:&quot;&lt;&quot;,&quot;value&quot;:5}]}'
+  options='{&quot;marker&quot;:{&quot;shape&quot;:&quot;circle&quot;,&quot;size&quot;:3}}'&gt;
+  &lt;script type=&quot;application/json&quot;&gt;
+    {&quot;source&quot;:&quot;lap:2&quot;,&quot;timeChannel&quot;:&quot;t&quot;,&quot;channels&quot;:{
+      &quot;steer&quot;:[-18,-6,8,14],&quot;throttle&quot;:[35,72,61,44],
+      &quot;brake&quot;:[0,8,0,2],&quot;t&quot;:[0,0.01,0.02,0.03]}}
+  &lt;/script&gt;
+&lt;/dv-scatter&gt;
+</code></pre>
+<p>The inline column format is supported by <code>dv-scatter</code> and <code>dv-steer-throttle</code>. Filtering precedes sampling. Use small inline datasets for portable examples. For a large recording, give the component a data-service URL so the web view receives only the bounded result.</p>
+<h3>Use the supplied local service</h3>
+<p>On a page served by Data Viewer, use <code>src=&quot;/api/scatter?source=local&amp;amp;start=0&amp;amp;end=120&quot;</code> with the same query structure. Choose channel names that exist in the opened log. Time bounds are seconds. To load a simulated specialist figure, use a source such as <code>/api/scatter?view=scatter-density</code>. The local service must be running for those routes.</p>
+<p>Open the <a href="../examples/plugin-scatter.html">standalone scatter</a> or the <a href="../examples/histogram.html">standalone histogram</a> to see the on-disk examples.</p>
+</article>
+<article id="parameters"><h1>Parameter and event reference</h1><table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Contract</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>frame</code>, <code>plot-style</code>, <code>theme</code></td>
+<td>Frames are apple, neumorphic or clean. Plot styles are fine, bold or pattern. Set light or dark explicitly or inherit the host scheme. Set height with the CSS property <code>--dv-height</code>.</td>
+</tr>
+<tr>
+<td><code>query</code></td>
+<td>JSON with X, Y, optional colour and size channel IDs, and an array of gates. Keys use lowercase <code>x</code>, <code>y</code>, <code>colour</code>, <code>size</code>, <code>gates</code>. Each gate has <code>channel</code>, <code>op</code>, <code>value</code>.</td>
+</tr>
+<tr>
+<td><code>options.axes</code></td>
+<td><code>x</code> and <code>y</code> each accept <code>scale</code> of linear or log and a two-value numeric <code>range</code> or null for auto.</td>
+</tr>
+<tr>
+<td><code>options.marker</code></td>
+<td><code>shape</code> accepts auto, circle, square, diamond or cross. <code>size</code> is a radius from 0.5 to 12 px. <code>opacity</code> is greater than zero and at most one.</td>
+</tr>
+<tr>
+<td><code>options.line</code>, <code>options.bar</code></td>
+<td>Lines accept width in pixels and a positive dash array, or an empty array for solid. Bars accept fill of solid, outline or pattern and a width scale greater than zero and at most one.</td>
+</tr>
+<tr>
+<td><code>src</code>, <code>data</code></td>
+<td>Fetch prepared JSON through a URL, embed it in a child JSON script, or assign to the element's JavaScript data property. A URL query is passed as JSON in the query parameter.</td>
+</tr>
+<tr>
+<td><code>hide-tools</code>, <code>external-controls</code></td>
+<td>Hide zoom buttons only, or hide the whole built-in control and readout strip. Canvas zoom, picking and events remain available.</td>
+</tr>
+</tbody>
+</table>
+<p>Prepared charts use <code>{data:[series], layout:{...}}</code>. A typical series contains <code>x</code>, <code>y</code>, <code>name</code> and <code>mode</code>. Tables use <code>columns</code>, <code>rows</code> and optional <code>selected</code>. A single instrument accepts <code>value</code>, <code>label</code> and <code>unit</code>. The composite gauge takes a sample keyed by its channels. Download a component's JSON to inspect its exact shape.</p>
+<h3>Connect a menu once</h3>
+<p>Listen for <code>dv-context</code> and call <code>preventDefault()</code> when the host opens its own menu. Change query and appearance attributes in the same handler. The component batches them. Listen for <code>dv-select</code> to read series, index and coordinates, plus source, sample ID, time or distance where supplied. <code>dv-range</code> reports the horizontal range in axis units or null after reset.</p>
+<pre><code class="language-javascript">plot.setAttribute(&quot;query&quot;, JSON.stringify(query));
+plot.setAttribute(&quot;options&quot;, JSON.stringify(options));
+plot.addEventListener(&quot;dv-select&quot;, ({detail}) =&gt; inspect(detail));
+</code></pre>
+<p>Here <code>inspect</code> is the host's sample inspector. <code>plot.selectSample(source, id)</code> highlights a displayed source row without echoing a pick by default. <code>dv-load</code> announces accepted declarative data and <code>dv-error</code> provides an error message. Use <code>reload()</code> to refresh a URL. The optional Qt example demonstrates a native context menu, worker-thread query and two-way selection over Qt WebChannel.</p>
+</article>
+<article id="service"><h1>Local service and analysis</h1><p><code>viewer.py</code> serves known local assets and the API through a loopback HTTP server. The application holds one open log per service process. Windows and browser tabs connected to the same instance share that log. Each page manages its own plot configuration.</p>
+<table>
+<thead>
+<tr>
+<th>Request</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET <code>/api/session</code></td>
+<td>Return the application identity, catalogue, simulated laps, scatter defaults, channel labels and local request token.</td>
+</tr>
+<tr>
+<td>POST <code>/api/open</code></td>
+<td>Open the supplied path or request the Windows picker for an empty path. Send a JSON object with <code>path</code> and the <code>X-Viewer-Token</code> header.</td>
+</tr>
+<tr>
+<td>GET <code>/api/state</code></td>
+<td>Report import progress, cancellation, errors or ready metadata. The workbook polls while a file opens.</td>
+</tr>
+<tr>
+<td>GET <code>/api/window</code></td>
+<td>Read one imported channel for <code>start</code>, <code>end</code> and a target bin count. Return points, matching rows and row-group count.</td>
+</tr>
+<tr>
+<td>GET <code>/api/scatter</code></td>
+<td>Evaluate the encoded query against a simulated worksheet or the active log. For a local log supply <code>source=local</code>, <code>start</code> and <code>end</code>.</td>
+</tr>
+<tr>
+<td>GET <code>/api/chart</code>, <code>/api/cursor</code></td>
+<td>Return a simulated worksheet or interpolated lap and reference values. Use <code>format=html</code> for portable numeric series.</td>
+</tr>
+<tr>
+<td>GET <code>/api/demo/samples</code>, <code>/api/demo/bokeh</code></td>
+<td>Supply the demo trace or the Python-generated Bokeh example.</td>
+</tr>
+<tr>
+<td>POST <code>/api/qt-example</code></td>
+<td>Start the bundled optional Qt example. The dashboard supplies the local request token.</td>
+</tr>
+</tbody>
+</table>
+<p><code>data_viewer/telemetry.py</code> generates the simulated session. <code>charts.py</code> defines the catalogue and basic worksheets; <code>analysis_plots.py</code> implements specialist analyses. Plotly.py describes many figures in Python. The reusable HTML library draws its own Canvas graphics. The separate engine demos load their individual plotting runtimes.</p>
+<p>In <code>web/app.js</code>, the workbook owns session state and cursor synchronisation. <code>web/scatter-host.js</code> implements the optional settings editor. <code>web/library.js</code> owns preview and export. The portable renderer runs independently of those files.</p>
+</article>
+<article id="performance"><h1>Performance and evidence</h1><p>Time history and XY scatter answer different questions. For time history, the loader preserves extrema in screen bins. For XY, the service counts all eligible rows and keeps a bounded deterministic sample with stable source identities. Derived statistics and specialist fits use the original eligible data where implemented. A rare XY outlier may be absent from a sampled view. Narrow the time window or gate to examine it.</p>
+<table>
+<thead>
+<tr>
+<th>Interaction</th>
+<th>Scatter data requests</th>
+<th>Full plot redraws</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Edit the draft, cancel, or apply unchanged settings</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Apply an axis or marker change</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Apply channels, gates and appearance together</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Pick a displayed point</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Picking restores the existing canvas and paints the selected marker. Three visual updates issued within one animation frame share one full draw. A superseded browser request is cancelled on the client and its late result is discarded. These counts were exercised by the desktop tests, including a synthetic one-million-row Parquet fixture.</p>
+<h3>Recorded loading benchmarks</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>5 million rows</th>
+<th>20 million rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First CSV open, empty cache</td>
+<td>1.69 s</td>
+<td>9.02 s</td>
+</tr>
+<tr>
+<td>Reopen cached recording, metadata only</td>
+<td>3.24 ms</td>
+<td>8.84 ms</td>
+</tr>
+<tr>
+<td>First one-channel overview</td>
+<td>265 ms</td>
+<td>892 ms</td>
+</tr>
+<tr>
+<td>30-second zoom, median of five</td>
+<td>6.93 ms</td>
+<td>12.05 ms</td>
+</tr>
+</tbody>
+</table>
+<p>These are recorded backend measurements on a Windows machine with eight hardware threads and about 32 GiB of RAM. The synthetic recordings had 12 columns. Cold CSV conversion, cached metadata access, disk reads, HTTP transfer and canvas painting measure different work. The <a href="../documentation/research/data-loading.html">loading study</a> describes the test conditions. The underlying <a href="../documentation/research/benchmark.json">5M results</a> and <a href="../documentation/research/benchmark-20M.json">20M results</a> are included.</p>
+</article>
+<article id="project"><h1>Repository and maintenance</h1><table>
+<thead>
+<tr>
+<th>Location</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Start Data Viewer.cmd</code>, <code>viewer.py</code>, <code>requirements.txt</code></td>
+<td>Single Windows launcher, local HTTP entry point and pinned runtime packages.</td>
+</tr>
+<tr>
+<td><code>data_viewer/</code></td>
+<td>Python telemetry, analysis, plot construction, scatter sampling and file loading.</td>
+</tr>
+<tr>
+<td><code>web/</code></td>
+<td>Browser workspaces, dashboard assets and shared component library. Vendored uPlot and its licence live in <code>web/vendor/</code>.</td>
+</tr>
+<tr>
+<td><code>examples/</code></td>
+<td>Standalone HTML examples, style previews and the optional native Qt host.</td>
+</tr>
+<tr>
+<td><code>documentation/</code></td>
+<td>This Markdown source, the generated PDF and dashboard, performance studies and local reference publications.</td>
+</tr>
+<tr>
+<td><code>tools/</code></td>
+<td>Manual builder and reproducible data-loading benchmark.</td>
+</tr>
+<tr>
+<td><code>tests/</code></td>
+<td>Python unit tests and desktop checks for the dashboard, HTML library, scatter controls, exports and Qt bridge.</td>
+</tr>
+<tr>
+<td><code>.venv/</code>, <code>.cache/</code></td>
+<td>Local Python environment and generated Parquet cache. <code>PRODUCT.md</code> records the product brief at the repository root.</td>
+</tr>
+</tbody>
+</table>
+<p>Run these commands from the project root in PowerShell. The launcher prepares the runtime environment. Desktop browser tests use Python Playwright and Chrome. Qt tests additionally use PyQt6-WebEngine. The first browser check below takes the address printed by the running launcher.</p>
+<pre><code class="language-powershell">.\.venv\Scripts\python.exe -m unittest -v
+py -3.12 tests/verify_html_library.py http://127.0.0.1:PORT
+py -3.12 tests/verify_html_plugin.py
+py -3.12 tests/verify_scatter_controls.py
+.\.venv\Scripts\python.exe tests/verify_qt_scatter.py
+</code></pre>
+<p>Replace <code>PORT</code> with the actual port. For the benchmark, install the optional DuckDB and psutil packages in the project environment and run <code>tools/benchmark.py --rows 5000000</code> with that Python interpreter. Specify <code>--output</code> to save a fresh result without replacing the recorded one.</p>
+<p>Edit <code>documentation/manual.md</code> to change the guide. With markdown-it-py and ReportLab installed, run <code>.\.venv\Scripts\python.exe tools/build_manual.py</code> to regenerate both deliverables. The viewer serves the generated files without requiring documentation-build packages at runtime.</p>
+</article>
+<article id="resources"><h1>Troubleshooting and references</h1><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The dashboard does not open</td>
+<td>Run the single launcher from the repository. Check its console for a setup error or the actual local address. A fresh environment requires Python 3.12 and pip access.</td>
+</tr>
+<tr>
+<td>An import fails</td>
+<td>Check the extension, unique numeric CSV headers, the spelling of <code>time_s</code> and the order and finiteness of CSV timestamps. Reopen a source that changed on disk.</td>
+</tr>
+<tr>
+<td>Scatter reports no samples</td>
+<td>Check the time window, gates, finite channel values and positive coordinates on log axes. Keep the settings editor accessible while revising the gate.</td>
+</tr>
+<tr>
+<td>Only a subset of XY points appears</td>
+<td>Compare the matching count with the displayed count. Narrow the time window or query before interpreting sparse regions.</td>
+</tr>
+<tr>
+<td>A plug-in shows no data or a source error</td>
+<td>Verify the JS path and the payload for that element. A URL needs a running, reachable service. For an offline page, embed the JSON or use the exported HTML.</td>
+</tr>
+<tr>
+<td>A native menu is unavailable</td>
+<td>Browser menus and plug-ins work with the core environment. The native Qt example additionally requires PyQt6-WebEngine.</td>
+</tr>
+<tr>
+<td>A recording has no sector or GPS worksheet</td>
+<td>Use imported time histories and XY scatter. Simulated specialist worksheets rely on definitions that a generic file may not contain.</td>
+</tr>
+</tbody>
+</table>
+<h3>Examples and reference material</h3>
+<p>To try the native host, open <strong>Dashboard → Troubleshooting and references → Open Qt example</strong>. Right-click its scatter plot to edit the settings. If the optional dependency is missing, run <code>.\.venv\Scripts\python.exe -m pip install PyQt6-WebEngine</code> from the project root.</p>
+<p>Open the <a href="../examples/styles.html">frame comparison</a> to inspect Apple, Neumorphic and Clean against the same plots. The <a href="../documentation/research/interactive-plots.html">interaction study</a> includes an A/B measurement example and the plotting-library comparison. The <a href="../documentation/references/coverage.html">MoTeC coverage index</a> maps the implemented worksheet families to the locally archived manuals, help and release notes.</p>
+<p>The project is a local prototype inspired by MoTeC i2 Pro. Hardware acquisition, licensed proprietary log import, live telemetry, synchronised video and calibration editing are outside its current scope. The desktop Qt example verifies the host contract locally. An independent viewer has to provide a compatible web view and any native event bridge it needs.</p>
+</article></main></div>
+<template id="nativeExample"><section class="nativeExample"><h3>Native Python example</h3><p>Try the same scatter element with a Qt context menu and two-way sample selection.</p><button id="qt" type="button">Open Qt example</button> <span role="status" id="qtStatus"></span></section></template>
+</body></html>

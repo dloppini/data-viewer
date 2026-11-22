@@ -1,0 +1,1632 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta content="en-au" http-equiv="Content-Language" />
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+	<title>MoTeC i2 Pro (x64) Software Release Notes (1.1.6.0904)</title>
+ <style type="text/css">
+<!--
+body {
+	font-family: "Arial Narrow";
+	font-size: 13pt;
+	background-color: #d2d2d2;
+}
+h1, h2, h3, h4, h5
+{
+  font-weight: bold;
+}
+h1 {
+	font-size: 32pt;
+}
+h2 {
+  font-size: 24pt;
+}
+h3 {
+  font-size: 20pt;
+}
+h4 {
+  font-size: 16pt;
+}
+h5 {
+	font-size: 13pt;
+	margin: 0px;
+	margin-top: 16px;
+}
+.release {
+  padding: 0px;
+  background-color: #e0e0e0;
+}
+.current > div {
+  background-color: white;
+}
+.history > div {
+	margin-top: 12px;
+}
+
+.logo {
+	margin: auto;
+}
+.logo h1 {
+	padding-left: 12px;
+}
+.logo div {
+	width: 185px;
+    height: 60px;
+	background: url("data:image/png;base64,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") no-repeat center;
+}
+
+.product {
+  background-color: black;
+  color: white;
+  font-size: 22pt;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+}
+.content {
+  padding: 0px 24px 12px 24px;
+}
+.content > ul {
+  margin: 8px;
+  padding-left: 16px;
+}
+
+.version {
+  background-color: #818284;
+  color: white;
+  font-size: 15pt;
+  font-weight: bold;
+}
+.version  > table {
+  width: 100%;
+  padding: 8px;
+}
+.revision {
+  width: 80%;
+  padding-left: 8px;
+}
+.date {
+  text-align: right;
+  padding-right: 8px;
+}
+
+.warning {
+  background-color: #ffb500;
+  margin: 24px auto 24px auto;
+  width: 95%;
+  font-size: larger;
+}
+.warning div {
+  padding: 16px;
+  width: 61px;
+  height: 57px;
+  background: url("data:image/png;base64,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") no-repeat center;
+}
+
+.release-notes {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+/* Collapse panels for extra content */
+.optional {
+  margin-top: 12px;
+}
+
+.optional-content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease-out;
+}
+
+.collapsible {
+	background-color: transparent;
+    color: black;
+    cursor: pointer;
+    padding: 4px;
+    width: 96%;
+	margin-left: 2%;
+	border:none;
+	border-bottom: 2px solid #808080;
+	padding-bottom: 3px;
+    text-align: left;
+    outline: none;
+    font-weight: bold;
+    font-size: 11pt;
+	font-stretch: condensed;
+}
+
+.collapsible:hover {
+    background-color: #aaa;
+}
+
+.collapsible:before {
+    content: '\25BA';
+    margin-right: 4px;
+}
+
+.active:before {
+    content: "\25BC";
+}
+ -->
+</style>
+</head>
+
+<body>
+	<div class="release-notes">
+		<table class="logo">
+			<tr>
+				<td><div /></td>
+				<td><h1>Software Release Notes</h1></td>
+			</tr>
+		</table>
+		<div class="product">i2 Pro (x64)</div>
+		<div class="current">
+
+			<!-- Current Release Begin -->
+			<div class="release">
+				<div class="version">
+					<table>
+						<tr>
+							<td class="revision">1.1.6.0904</td>
+							<td class="date">12 July 2024</td>
+						</tr>
+					</table>
+				</div>
+				<div class="content">
+				  <h5>NEW IN THIS RELEASE:</h5>
+				  <ul>
+					<li>Added: Worksheet <i>Print to Clipboard</i> keyboard shortcut <b>Ctrl+Alt+P</b></li>
+				  </ul>
+				  <h5>FIXED IN THIS RELEASE:</h5>
+				  <ul>
+					<li>Fixed: Maths channels not calculated after Telemetry 'Retrieve' from T2 server.</li>
+					<li>Fixed: Maths <i>remainder()</i> function shows "Incorrect argument type" for point evaluator.</li>
+					<li>Fixed: Maths Filter 'Low Pass Filter Cutoff' not correct when applied to real-time telemetry.</li>
+					<li>Fixed: <i>Telemetry Status Grid</i> Component items sorted in unexpected order.</li>
+					<li>Fixed: <i>Time/Distance</i> 'Annotations' not saved when exporting a real-time telemetry data source.</li>
+					<li>Fixed: Unexpected exit during 'Workspace Save' (due to missing drive).</li>
+				  </ul>
+				</div>
+			</div>
+			<!-- Current Release End -->
+
+		</div>
+
+		<div class="optional">
+			<button class="collapsible">System Requirements</button>
+			<div class="optional-content">
+				<ul>
+					<li>Operating systems: Windows 10 or later.</li>
+					<li>Minimum screen resolution: 1366 x 768. (Recommended: 1920 x 1080 or higher)</li>
+					<li>Internet Explorer 11 (or higher)</li>
+				</ul>
+			</div>
+
+			<button class="collapsible">Notes</button>
+			<div class="optional-content">
+				<ul>
+					<li>i2 Pro only supports ECU &amp; ADL files enabled with the "Pro Logging" option.</li>
+					<li>i2 Pro 1.0 math plugins &amp; functions are not compatible (they must be recompiled and targeted for 1.1).</li>
+					<li>
+						When used to receive telemetry from T2 servers, any active firewalls may need to be updated to allow:
+						<ul>
+							<li>Inbound Multicast DNS traffic (IPv6) on UDP port 5353</li>
+							<li>Outbound HTTP traffic on TCP (IPv6)</li>
+							<li>Inbound UDP (IPv6) traffic for i2.exe</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<button class="collapsible">Revision History</button>
+				<div class="optional-content history">
+
+				  <!-- Insert next revision here -->
+				  <div class="release">
+					  <div class="version">
+						  <table>
+							  <tr>
+								  <td class="revision">1.1.6.0895</td>
+								  <td class="date">27 June 2024</td>
+							  </tr>
+						  </table>
+					  </div>
+					  <div class="content">
+						<h5>NEW IN THIS RELEASE:</h5>
+						<!--
+						<ul>
+						  <li>Added:</li>
+						</ul>
+						-->
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+						  <li>Fixed: Scatter Plot Linear Regression not matching Math Linear Regression when X,Y channels have different sample rates.</li>
+						</ul>
+					  </div>
+				  </div>
+
+				  <div class="release">
+					<div class="version">
+					  <table>
+						<tr>
+						  <td class="revision">1.1.6.0893</td>
+						  <td class="date">13 June 2024</td>
+						</tr>
+					  </table>
+					</div>
+					<div class="content">
+					  <h5>NEW IN THIS RELEASE:</h5>
+					  <!--
+						  <ul>
+							<li>Added:</li>
+						  </ul>
+						  -->
+						  <h5>FIXED IN THIS RELEASE:</h5>
+						  <ul>
+							<li>Fixed: Some LD files not showing in Open Dialog.</li>
+							<li>Fixed: Exporting a T2 telemetry stream (to LD) via the i2 API may fail to include laps.</li>
+						  </ul>
+					</div>
+				  </div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">1.1.6.0887</td>
+								<td class="date">22 May 2024</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+					  <h5>NEW IN THIS RELEASE:</h5>
+					  <ul>
+						<li>Added: KeyPass
+						  <p>
+							The <b>MoTeC KeyPass</b> feature allows selective access to Secure LD files (.lds) in i2.
+						  </p>
+						  <p>
+							To get started and for all other <b>MoTeC KeyPass</b> related queries, please contact <a href src="mailto:support@motec.com.au">MoTeC Support</a>.
+						  </p>
+						</li>
+						<li>Added: Extrapolate option to math 2D/3D tables</li>
+						<li>Added: Option to output Math Regression coefficients to the start of the range (see Tools|Options|Analysis)</li>
+						<li>Added: Pacejka Tyre Model math regression option with optional upper/lower limits</li>
+						<li>Added: Excel Report `Channel` samples export </li>
+						<li>Added: Excel Report `Picture` component print preview export </li>
+						<li>Added: Print alignment options for single component printing</li>
+						<li>Added: Channel report '&Delta;%' column for overlay comparison</li>
+						<li>Added: Channel report 'Gating' channel setting</li>
+						<li>Added: Telemetry (Auto Split) Exports Folder setting (see Tools|Options|Telemetry)</li>
+						<li>Added: Scatter Plot main/datum cursor slope and highlight options</li>
+						<li>Added: i2.launch.exe to provide extra flexibility when launching LD files from the desktop</li>
+					  </ul>
+					  <h5>FIXED IN THIS RELEASE:</h5>
+					  <ul>
+						<li>Fixed: Locale settings not working as expected for French Windows installation</li>
+						<li>Fixed: Rainbow component not showing math channels that are overlay dependent</li>
+						<li>Fixed: Telemetry Math function <i>`previous_sample()`</i> returning inconsistent value</li>
+						<li>Fixed: Telemetry Math constant unit conversion failed</li>
+						<li>Fixed: Telemetry Math cannot generate integer type channels</li>
+						<li>Fixed: Telemetry Math dependency not recalculated when a constant is changed</li>
+						<li>Fixed: Telemetry alias channels not applied</li>
+						<li>Fixed: Telemetry high rate channels performance</li>
+						<li>Fixed: Telemetry Auto Split data loss during export operation</li>
+						<li>Fixed: Telemetry UTC Time samples encoded as data type <i>double</i> are not displayed correctly</li>
+						<li>Fixed: i2 shutdown occasionally hangs if i2API is in an active</li>
+						<li>Fixed: Display format of time channels is missing</li>
+						<li>Fixed: Scatter Plot regression coefficients don't always match the equivalent Math regression coefficients</li>
+						<li>Fixed: Print only shows 1 overlay selection</li>
+						<li>Fixed: Print header not centered</li>
+						<li>Fixed: Excel Report `Picture` bottom is clipped</li>
+						<li>Fixed: CSV import fails when optional details are missing</li>
+						<li>Fixed: Bosch import fails with text (enumeration) values</li>
+						<li>Fixed: Bosch import of partial laps are offset from the outing start</li>
+						<li>Fixed: Math table rate setting always resets back to 'Auto'</li>
+						<li>Fixed: Notes component stops responding when saving changes</li>
+						<li>Fixed: Video component playback improvements (multiple camera views, time mode)</li>
+						<li>Fixed: Some LD file "Integer" channels are being treated as "Real"</li>
+						<li>Fixed: Status Light gauge renders incorrectly with "Print To Clipboard"</li>
+						<li>Fixed: Math "filter" function doesn't support fractional cut-off frequency</li>
+						<li>Fixed: Math "smooth" function may have an output offset (when input has a large floating point range)</li>
+						<li>Fixed: Math channels occasionally do not recalculate when a source channel from the i2 API is updated</li>
+						<li>Fixed: Time/Distance component 'Background Highlight' height halved when overlays visible</li>
+					  </ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">TBA</td>
+								<td class="date">TBA</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+					  <h5>NEW IN THIS RELEASE:</h5>
+					  <ul>
+						<li>Added: i2API - <i>IMtcDataSelection3::SetZoomTime()</i> method.</li>
+						<li>Added: Details Editor - Gear Ratios can optionally be entered using gear teeth (<i>driven</i><b>:</b><i>drive</i>) notation.</li>
+						<li>Added: Details Editor - Automatic unit conversion when the display unit is changed. Ability to assign the unit separately.</li>
+						<li>Added: Tools|Options|Analysis|Component Options - Apply an automatic margin to the Time/Distance Y axis when using manual scales.</li>
+						<li>Added: Math Functions:
+						  <ul>
+							<li><b>running_time()</b> - outing time (in seconds)</li>
+							<li><b>running_time(<span style="color:orange;">"Outings:Laps"</span>)</b> - running lap time (in seconds)</li>
+						  </ul>
+						</li>
+						<li>Added: Font Scheme settings for:
+						  <ul>
+							<li>Data View [F8]</li>
+							<li>Values View [V]</li>
+						  </ul>
+						</li>
+						<li>Added: Track Position component 'Show Section Colours' setting  </li>
+						<li>Added: Track Editor 'Generate Default Sections...' minimum straight/turn length settings.</li>
+					  </ul>
+					  <h5>FIXED IN THIS RELEASE:</h5>
+					  <ul>
+						<li>Fixed: Python i2API sample.</li>
+						<li>Fixed: Import Data occasionally hangs when cancel clicked during conversion.</li>
+						<li>Fixed: Import Data "Search Subfolder's" didn't find all input files.</li>
+						<li>Fixed: Import Data "Resolve" units failed.</li>
+						<li>Fixed: Math expressions using range based functions are not recalculated when the 'Corrected Distance' channel is updated.</li>
+						<li>Fixed: Video component 'Camera View' settings are too complicated.</li>
+						<li>Fixed: Values View [V] resets its scrolled position whenever a channel is double clicked.</li>
+					  </ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+					  <table>
+						<tr>
+						  <td class="revision">1.1.5.0085</td>
+						  <td class="date">16 February 2022</td>
+						</tr>
+					  </table>
+					</div>
+					<div class="content">
+					  <h5>FIXED IN THIS RELEASE:</h5>
+					  <ul>
+						<li>Fixed: Maths constant cannot be edited in a non English locale.</li>
+						<li>Fixed: Floating point numbers not displayed as per current locale preferences.</li>
+						<li>Fixed: Crash when Channel Alias setup results in a self reference.</li>
+						<li>Fixed: Crash when adding a new Excel Report.</li>
+						<li>Fixed: Channel report chart not displaying full width when set to 'Outings' mode.</li>
+						<li>Fixed: Workspace restore from backup may result in extra workbooks being loaded.</li>
+						<li>Fixed: Allow Dash Manager 'RTC UTC Time' channel to be selected into the Clock gauge.</li>
+						<li>Fixed: Worksheet tab horizontal extent is too wide.</li>
+					  </ul>
+					</div>
+				  </div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">1.1.5.0053</td>
+								<td class="date">04 November 2021</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+					  <h5>NEW IN THIS RELEASE:</h5>
+					  <ul>
+						<li>Added: External command after ECU/Dash log unload (see 'Tools|Options|Analysis').</li>
+						<li>Added: Circuit Trusted Laps % setting (see 'Tools|Options|Circuit|Trusted Laps').</li>
+						<li>Added: Maths search and narrow across all math sources.</li>
+						<li>Added: Maths drag/drop to re-order items.</li>
+						<li>Added: Maths expression dialog apply button.</li>
+						<li>Added: Maths expression dialog show string details in channel selection list.</li>
+						<li>Added: Maths constants 'Quick Edit' view.</li>
+						<li>Added: Allow multiple worksheets to be printed (via print preview).</li>
+						<li>Added: Compass Gauge for direction/heading visualisation (e.g. wind direction)</li>
+						<li>Added: Channel Report - Double click on a min (or max) cell to move the main cursor to that data point.</li>
+						<li>Added: Time/Distance - 'Time of Day' display based on UTC time channel.</li>
+						<li>Added: Time/Distance - 'Background Highlight' setting.</li>
+						<li>Added: Scatter Plot - 'Data Density' colour interpolation curve setting.</li>
+						<li>Added: GPS Track - 'Wind Heading' setting.</li>
+						<li>Added: Channels drag/drop now supports multiple items.</li>
+						<li>Added: M1 Engine Workspace Template.</li>
+						<li>Added: i2API - IMtcChannel4::ChannelType property to distinguish between maths/logged channels.</li>
+					  </ul>
+					  <h5>FIXED IN THIS RELEASE:</h5>
+					  <ul>
+						<li>Fixed: Maths channels calculations not always updating when an indirect dependency has changed.</li>
+						<li>Fixed: Maths channels name change (case only) is not applied.</li>
+						<li>Fixed: Maths expression syntax highlighting and bracket/parenthesis matching.</li>
+						<li>Fixed: Crash when opening LD file with invalid GPS data.</li>
+						<li>Fixed: Crash when X Axis Interval Average Width set to 0.</li>
+						<li>Fixed: Video playback and frame stepping.</li>
+					  </ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">1.1.4.0689</td>
+								<td class="date">10 February 2021</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+					<h5>NEW IN THIS RELEASE:</h5>
+					<ul>
+						<li>Added: <i>Channel Bits</i> component.</li>
+						<li>Added: 2D Math tables from setup sheets.</li>
+						<li>Added: <i>FFT Component</i> Frequency Response Function (FRF) estimate.</li>
+						<li>Added: Math function <i>is_finite</i> returns true/false based on input value being finite.</li>
+						<li>Added: Channel alias import/export.</li>
+						<li>Added: Restore overlay selections on start-up (when load previous data is enabled).</li>
+						<li>Added: UTC Time channel conversion from GPS date/time and corresponding <i>Clock Gauge</i> for display.</li>
+					</ul>
+					<h5>FIXED IN THIS RELEASE:</h5>
+					<ul>
+					  <li>Fixed: Modal dialog sometimes appear on wrong monitor.</li>
+					  <li>Fixed: Channel Editor dialog sometimes crashes on close.</li>
+					  <li>Fixed: COM Automation crash after assigning a null <i>DataArray</i>.</li>
+					  <li>Fixed: COM Automation data export sometimes displays a dialog even though the application is not visible.</li>
+					  <li>Fixed: <i>Scatter Plot</i> component copy/paste sometimes results in a crash.</li>
+					  <li>Fixed: <i>Scatter Plot</i> density bin count setting is not validated.</li>
+					  <li>Fixed: <i>Mixture Map</i> component properties dialog is too large for small screens</li>
+					  <li>Fixed: <i>Time Report</i> shows too many decimal places for seconds. Now limits to 3.</li>
+					  <li>Fixed: Reference lap generation sometimes fails.</li>
+					  <li>Fixed: <i>Channel Report</i> ctrl+left click results in unexpected resize behaviour.</li>
+					  <li>Fixed: <i>Channel Report</i> graph occasionally renders grid incorrectly.</li>
+					  <li>Fixed: <i>Channel Report</i> graph labels Y axis incorrectly.</li>
+					  <li>Fixed: <i>Race Control</i> full course flag shown per section.</li>
+					</ul>
+				</div>
+
+				<div class="release">
+				  <div class="version">
+					<table>
+					  <tr>
+						<td class="revision">1.1.4.0454</td>
+						<td class="date">18 February 2019</td>
+					  </tr>
+					</table>
+				  </div>
+				  <div class="content">
+					<h5>NEW IN THIS RELEASE:</h5>
+					<ul>
+					  <li>Added: i2 API Python example.</li>
+					  <li>Added: Drag profile <b>Tools|Run Editor...</b> <i>Delete Run</i> button added.</li>
+					  <li>Added: McLaren ATLAS ASCII data importer (Activation required).</li>
+					  <li>Added: Option to export a repeated lap for overlay purposes.</li>
+					  <li>Added: Auto split a telemetry stream based on a channel condition.</li>
+					  <li>Added: Report charts now plot multiple data sources instead of only the main selection.</li>
+					  <li>Added: Excel Reports optionally support compact headers.</li>
+					</ul>
+					<h5>FIXED IN THIS RELEASE:</h5>
+					<ul>
+					  <li>Fixed: Scatter Plot Interval Average rounding error.</li>
+					  <li>Fixed: Channel Status Dialog not displaying mapped units correctly.</li>
+					  <li>Fixed: Select Colour Scheme from the toolbar selects the default white scheme.</li>
+					  <li>Fixed: Entering a duplicate math enumeration value silently fails.</li>
+					  <li>Fixed: Entering an incorrect password may result in telemetry security settings being overwritten.</li>
+					  <li>Fixed: Corrected speed clamps are always displayed in km/h.</li>
+					  <li>Fixed: Overlay channels with different units not handled correctly.</li>
+					</ul>
+				  </div>
+				</div>
+
+				<div class="release">
+				  <div class="version">
+					<table>
+					  <tr>
+						<td class="revision">1.4.0.0421</td>
+						<td class="date">01 November 2018</td>
+					  </tr>
+					</table>
+				  </div>
+				  <div class="content">
+				    <!--
+						<h5>NEW IN THIS RELEASE:</h5>
+						<ul>
+						  <li>Added: </li>
+						</ul>
+						-->
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+						  <li>Fixed: Scatter Plot doesn't allow data points to be selected that overlap the hidden channel legend.</li>
+						  <li>Fixed: Scatter Plot <i>'Print to Clipboard'</i> incorrectly offsets the interval average trend-line.</li>
+						  <li>Fixed: Math dialog updates are slow when the channels dock window is displayed.</li>
+						  <li>Fixed: Possible crash on exit.</li>
+						  <li>Fixed: Possible crash when receiving telemetry data with maths configured.</li>
+						  <li>Fixed: Possible crash when circular channels alias settings are applied.</li>
+						  <li>Fixed: Possible crash when using COM single instance application.</li>
+						  <li>Fixed: Track Report notes are not being displayed.</li>
+						  <li>Fixed: Telemetry channels don't support scaled/offset or filtering via the context-menu.</li>
+						</ul>
+				  </div>
+				</div>
+
+				<div class="release">
+				  <div class="version">
+					<table>
+					  <tr>
+						<td class="revision">1.1.4.0357</td>
+						<td class="date">8 August 2018</td>
+					  </tr>
+					</table>
+				  </div>
+				  <div class="content">
+					<h5>NEW IN THIS RELEASE:</h5>
+					<ul>
+					  <li>Added: 2D/3D Math Table definitions can now be visualized.</li>
+					  <li>Added: Regression maths.</li>
+					  <li>Added: Math constants now support comments.</li>
+					  <li>Added: Math expressions can be associated with user defined enumeration types.</li>
+					  <li>Added: Data selection settings are restored from previous session.</li>
+					  <li>Added: Channel report graph.</li>
+					  <li>Added: Track based views now support zoom.</li>
+					  <li>Added: Gauges can be optionally associated with a separate alarm (<b>'flash'</b> when active).</li>
+					  <li>Added: Acceleration reports copy/paste to Excel now includes all ranges.</li>
+					  <li>Added: Excel report generation now supports transposed tables.</li>
+					  <li>Added: Excel report generation now supports an option to only auto update when the target workbook is active.</li>
+					  <li>Added: Multi-monitor support.</li>
+					  <li>Added: Scatter Plot now shows average metric based on x axis bin width.</li>
+					  <li>Added: Scatter Plot now supports a draw size based on a channel.</li>
+					  <li>Added: User defined folder shortcuts in the File Open dialog.</li>
+					  <li>Added: Toolbar button to toggle the Lap Stretch calculation (<i>Circuit Profile</i> only).</li>
+					  <li>Added: Toolbar button to select colour schemes (must be enabled from Tools|Options|Colours).</li>
+					  <li>Added: Data Window now has a Lap Number filter to help narrow displayed laps in the view (<i>Circuit Profile</i> only).</li>
+					  <li>Added: Time/Distance graphs now supports an optional trace style setting for Telemetry based data.</li>
+					  <li>Added: Lap Editor GPS beacon selection now enumerates 'Dash Manager Venue Files' (if <i>Dash Manager</i> is installed).</li>
+					  <li>Added: Setup Sheet file name details setting (defaults to 'Vehicle Id').</li>
+					  <li>Added: Duplicate a worksheet from the context menu.</li>
+					  <li>Added: Added <i>Delta</i> statistic (max value - min value) for channel reports.</li>
+					  <li>Added: Auto center on cursor mode for time/distance graphs.</li>
+					  <li>Added: Basic beacon support for Rally profile.</li>
+					  <li>Added: Values window scrolling now queues maths calculations in the background to avoid UI hang.</li>
+					  <li>Added: Prompt to save telemetry data (if connected) on exit.</li>
+					  <li>Added: Edit Alias names</li>
+					  <li>Added: Corrected Speed calculations now allow clamping.</li>
+					  <li>Added: Race Control vehicle position and track state visualization.</li>
+					  <li>Added: Notes component.</li>
+					</ul>
+					<h5>FIXED IN THIS RELEASE:</h5>
+					<ul>
+					  <li>Fixed: Google Earth export failing for Engine/Drag workspace profiles.</li>
+					  <li>Fixed: Google Earth export doesn't export overlays.</li>
+					  <li>Fixed: Applying a scale/offset to a channel caused DPS to revert to 2.</li>
+					  <li>Fixed: Mouse wheel zoom not working when telemetry is paused.</li>
+					  <li>Fixed: Telemetry lap numbering incorrect after a split or meta data change.</li>
+					  <li>Fixed: Invalid date/time after splitting data files across an hour boundary.</li>
+					  <li>Fixed: Possible crash when using the math <i>bit_xor()</i> function.</li>
+					  <li>Fixed: Channel report scroll offset resets whenever a new lap is selected.</li>
+					  <li>Fixed: Channel mappings are not applied to telemetry data.</li>
+					  <li>Fixed: Worksheet rename fails for a newly created worksheet.</li>
+					  <li>Fixed: UI consistency/improvements.</li>
+					  <li>Fixed: Alias binding against invalid math channel should select another channel.</li>
+					</ul>
+				  </div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.1.2.0808</td>
+								<td class="date">24 August 2017</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<!--
+								<h5>NEW IN THIS RELEASE:</h5>
+								<ul>
+								</ul>
+						-->
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: Manual beacon marker times change after a save operation.</li>
+							<li>Fixed: Channel report export (to Excel) takes a long time for very large data sets.</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.1.2.0795</td>
+								<td class="date">11 August 2017</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<!--
+									<h5>NEW IN THIS RELEASE:</h5>
+									<ul>
+									  <li>Added: </li>
+									</ul>
+						-->
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: Reference Lap generation fails on some logged data.</li>
+							<li>Fixed: Range Key View disappears when an active data set is deleted.</li>
+							<li>Fixed: Possible BSOD on Windows 10 when displaying a rotated GPS Track background image.</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.1.2.0772</td>
+								<td class="date">08 June 2017</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>NEW IN THIS RELEASE:</h5>
+						<ul>
+							<li>Added: Lap based <i>Channel Report</i> for all live Telemetry sources.</li>
+							<li>Added: Option to start i2 in <i>Telemetry View</i> mode.</li>
+							<li>Added: Option to smooth GPS based tracks in the <i>Generate Track</i> dialog.</li>
+							<li>Added: Japanese translation (see Help|Language)</li>
+							<li>Added: Bosch ASCII data importer (see File|Import Data)</li>
+							<li>Added: Option to associate an alarm with a status light (that flashes when active).</li>
+						</ul>
+
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: GPS track lines are drawn too close to the component edge.</li>
+							<li>Fixed: GPS time alignment button only available when a Time/Distance component is focused. Moved the button to the top (general) toolbar.</li>
+							<li>Fixed: Channel Reports may result in blank cells for start/end of lap values that are invalid. Added a 5 second <i>probe</i> time when searching for valid start/end of lap values.</li>
+							<li>Fixed: Occasional crash on exit after receiving telemetry.</li>
+							<li>Fixed: Occasional crash on exit when a duplicate channel is configured on a Track Report note.</li>
+							<li>Fixed: Occasional crash when auto generating GPS based track sections.</li>
+							<li>Fixed: Possible crash when receiving telemetry from a newer version of t2.</li>
+							<li>Fixed: Track section deletion doesn't always update the UI.</li>
+							<li>Fixed: Editing details from the <i>Run Editor</i> doesn't show custom details.</li>
+							<li>Fixed: Some numeric details don't show up as channels in the maths expression editor.</li>
+							<li>Fixed: Enumerations missing from exported M1 logged data.</li>
+							<li>Fixed: Splitter occasionally starts at incorrect size.</li>
+							<li>Fixed: Local file maths may fail to run when multiple files are loaded.</li>
+							<li>Fixed: Applying a scale/offset or filter via the time/distance channel context menu resets the channels DPS to 2.</li>
+							<li>Fixed: Pressing 'w' when the cursor is outside the selected lap doesn't reset the cursor inside the lap.</li>
+							<li>Fixed: Time/Distance graph not rendering large (off-scale) samples correctly.</li>
+							<li>Fixed: Time/Distance graph not rendering correctly after all channels are removed via property pages.</li>
+							<li>Fixed: Time/Distance graph may not restore zoom correctly when toggling between time & distance (F9) modes when corrected distance is missing.</li>
+							<li>Fixed: Rainbow track not displaying colors after GPS locking.</li>
+							<li>Fixed: Control Panel internet proxy settings are not being used.</li>
+							<li>Fixed: Telemetry DDE settings are lost after a split operation.</li>
+							<li>Fixed: Maths Expression <b>'Auto'</b> rate calculation limits updated to support rates greater than 1Khz.</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.1.2.0669</td>
+								<td class="date">09 November 2016</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>NEW IN THIS RELEASE:</h5>
+						<ul>
+							<li>Added: Double clicking on an .ld file in File Explorer now opens in i2.</li>
+							<li>Added: Math item comments.</li>
+							<li>Added: Track based components can be <i>backgrounded</i> to allow other components to be placed over the top.</li>
+							<li>Added: Data Window toolbar button to apply filter across all open data sources.</li>
+							<li>Added: Acceleration report component.</li>
+							<li>Added: Log File Open now allows paths to be typed in.</li>
+							<li>Added: Hide/Show device events (Shift+E) option in Time/Distance graphs.</li>
+							<li>Added: French translation (seel Help|Language).</li>
+							<li>Added: Clear all overlay selections (Shift+F4).</li>
+						</ul>
+
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: Time/Distance graph event markers interfere with main/datum cursor positioning (via the mouse).</li>
+							<li>Fixed: Time/Distance graph channel properties hit-testing on checkbox's causes incorrect row to toggle.</li>
+							<li>Fixed: Incorrect scheme color used in report headings.</li>
+							<li>Fixed: Track section minimum distance reduced to 10m.</li>
+							<li>Fixed: Possible crash calculating math expressions.</li>
+							<li>Fixed: Possible crash generating channel report.</li>
+							<li>Fixed: Possible crash toggling Time/Distance offset axis.</li>
+							<li>Fixed: Possible crash whilst receiving telemetry.</li>
+							<li>Fixed: Possible crash exporting CSV reports that have a <b>%</b> character in channel names.</li>
+							<li>Fixed: Math constant lookup ignores source enable condition.</li>
+							<li>Fixed: Math constant name invalid after copy/paste.</li>
+							<li>Fixed: Math search order for Local Maths.</li>
+							<li>Fixed: Math bit_decode function output not visible in status component.</li>
+							<li>Fixed: Math plugin installation failiure due to permissions.</li>
+							<li>Fixed: Math calculation not updated after the enabled state of a dependent 'Log File Maths' item is toggled.</li>
+							<li>Fixed: Google Maps API key support.</li>
+							<li>Fixed: GPS track generation now adds an extra point to improve start/finish alignment.</li>
+							<li>Fixed: Receiving multiple telemetry "Distance" channels may cause the trackmap cursor to jump.</li>
+							<li>Fixed: Multiple Excel Channel Reports generated on the same sheet don't update correctly.</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.1.2.0542</td>
+								<td class="date">28 May 2016</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>NEW IN THIS RELEASE:</h5>
+						<ul>
+							<li>Added: Math files now support a per datasource detail based "enable" condition.</li>
+							<li>Added: Time/Distance <i>Control+Shift+C</i> copies all configured channel values at the main cursor position.</li>
+							<li>Added: <b>Close All Files</b> allows selective closing of logged/telemetry data files when a combination of file types are open.</li>
+							<li>Added: GPS track width property.</li>
+							<li>Added: Next/Previous interpolation methods for 2D/3D math tables.</li>
+							<li>Added: Apply button added to Beacon Offset dialog.</li>
+							<li>Added: 'Vehicle Number' detail to the Open Log File(s) dialog (as an optional column and quick filter).</li>
+							<li>Added: 'Venue Category' detail to both the Open Log File(s) dialog (as an optional column and quick filter) and Details Editor dialog.</li>
+						</ul>
+
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: Unit dropdown clips display text.</li>
+							<li>Fixed: View Device Config fails for ECU data.</li>
+							<li>Fixed: Units file fails to install.</li>
+							<li>Fixed: Channel Report <b>Interpolate at boundaries</b> not enabled for all selections.</li>
+							<li>Fixed: Maths file import/export now defaults to &lt;MyDocuments&gt;\MoTeC\i2.</li>
+							<li>Fixed: Editing a math table results in it being moved to the bottom of the list.</li>
+							<li>Fixed: Transient units shown in unit selection combobox.</li>
+							<li>Fixed: Dock window hover time reduced to speed up fly-out action.</li>
+							<li>Fixed: Improved column header up/down editing.</li>
+							<li>Fixed: Workspace Math files are now displayed sorted.</li>
+							<li>Fixed: Local Maths check state was not being set correctly.</li>
+							<li>Fixed: 2D/3D math table editing improvements.</li>
+							<li>Fixed: Transient Math Filters (Temporary Math Source) not always being applied.</li>
+							<li>Fixed: Possible crash on start-up when missing units file.</li>
+							<li>Fixed: Import Data fails due to trailing whitespace.</li>
+							<li>Fixed: Import Data duplicates the short comment detail into the long comment.</li>
+							<li>Fixed: Import Data settings not being saved.</li>
+							<li>Fixed: Import Data unknown unit scan always empty.</li>
+							<li>Fixed: Math constants are still in-use when a math source is disabled.</li>
+							<li>Fixed: TrackVision data file generation.</li>
+							<li>Fixed: Export Data can causes i2 to become unresponsive for large data sets.</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.1.2.0472</td>
+								<td class="date">22 March 2016</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>NEW IN THIS RELEASE:</h5>
+						<ul>
+							<li>
+								Added: 64 bit native application.<br />
+								<b style="color:red;">Note:</b> You may need to recompile and deploy math plugins to match the target CPU architecture.
+							</li>
+							<li>Added: Pre-process large LD files and cache results for improved runtime performance.</li>
+							<li>
+								Added: Option to inline the units column in the values window to save horizontal space<br />
+								<b>Note:</b> You may need to restart i2 to resize the values window to a smaller size
+							</li>
+						</ul>
+
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: Telemetry based report limiting now works when <i>Include untrusted</i> option is unchecked.</li>
+							<li>Fixed: Periodic Excel report generation occasionally fails.</li>
+							<li>Fixed: Time/Distance scrollbar offsets reset after a resize operation.</li>
+							<li>Fixed: GPS Heading indicator for overlays not displayed.</li>
+							<li>Fixed: Telemetry occasionally processes bad packets (due to corrupt header).</li>
+							<li>Fixed: Check for Updates online improvements.</li>
+							<li>Fixed: Miscellaneous minor bug fixes and performance improvements.</li>
+							<li>Fixed: COM "Type Library" registration.</li>
+							<li>Fixed: COM IMtcQueryAPI interop with MATLAB arrays.</li>
+							<li>Fixed: COM <i>ApplicationSingle</i> instance fails when ExportData() is called.</li>
+							<li>Fixed: Setup Sheet Excel files must now have a <b>.xlsm</b> (macro-enabled) extension.</li>
+							<li>Fixed: <i>Data Export</i> source channel options are now only visible when exporting from a Time/Distance graph.</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.1.1.0363</td>
+								<td class="date">04 November 2015</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>NEW IN THIS RELEASE:</h5>
+						<ul>
+							<li>Added: Worksheet Splitters (control + click/drag to split Worksheets).</li>
+							<li>Added: User defined <b>Data Sets</b> (Data|Edit Data Sets...)</li>
+							<li>Added: Telemetry Status Grid component (provides a channel status light per configured Telemetry Source).</li>
+							<li>Added: Telemetry Track Position component now uses <i>Vehicle Number</i> detail to distinguish cursors.</li>
+							<li>Added: Telemetry GPS Track component now uses <i>Vehicle Number</i> detail to distinguish cursors.</li>
+							<li>Added: Telemetry View mode that inlines the data key into each worksheet (View|Toggle Telemetry View).</li>
+							<li>Added: Workspace <b>Save As...</b></li>
+							<li>Added: Driver detail can now be updated when splitting an LD file.</li>
+							<li>Added: Ability to turn off an entire maths source.</li>
+							<li>Added: Ability to turn off individual alias items.</li>
+							<li>Added: M1 diagnostic channels can now appear in the time/dist error view.</li>
+							<li>Added: Ctrl+Click multi-select component move/resize.</li>
+							<li>Added: <b>Device Type</b> and <b>Serial Number</b> database filters in file open dialog.</li>
+							<li>Added: Channel report option to limit results to last 'n' Laps (when reporting on real-time Telemetry).</li>
+							<li>Added: Status Light gauge now supports dynamic font scaling.</li>
+						</ul>
+
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: M8 beacon support.</li>
+							<li>Fixed: Alarm <i>Jump To</i> feature now works when Telemetry is paused.</li>
+							<li>Fixed: Alarm view missing from non circuit profiles.</li>
+							<li>Fixed: Telemetry dialog server status doesn't update when a servers meta data has changed.</li>
+							<li>Fixed: Telemetry dialog server display is now sorted.</li>
+							<li>Fixed: Avoid main lap selection change when a Telemetry servers meta data has changed.</li>
+							<li>Fixed: Track section edit incorrect when distance units changed.</li>
+							<li>Fixed: <i>Show Video Sync Points</i> option is now per time/dist graph (removed from Tools|Options|Video).</li>
+							<li>Fixed: Manually inserted beacons not correctly exported when splitting data files.</li>
+							<li>Fixed: Possible crash when editing a channel filter from the Time/Distance graph.</li>
+							<li>Fixed: Possible crash when clicking an FFT graph with overlays.</li>
+							<li>Fixed: Telemetry source occasionally close after receiving invalid telemetry data.</li>
+							<li>Fixed: Telemetry group not always displayed at the top of the Data window.</li>
+							<li>Fixed: Telemetry trackmap legend visibility mismatch with property setting.</li>
+							<li>Fixed: Empty string details not being read in from LDX.</li>
+							<li>Fixed: <i>Show Overlays</i> option in video component is always disabled.</li>
+							<li>Fixed: <i>New Folder...</i> shell context menu option in the <i>Open Log File</i> dialog doesn't do anything.</li>
+							<li>Fixed: Possible corruption of XML files when saving.</li>
+							<li>Fixed: Channel report <i>"End Val"</i> calculation missing last sample value.</li>
+							<li>Fixed: Channel report occasionally fails to generate a result for math plug-in channels.</li>
+							<li>Fixed: Annotations not displayed when main range is offset.</li>
+							<li>Fixed: Datum cursor does not work when Telemetry is paused.</li>
+							<li>Fixed: External math plugin results may be missing the last sample.</li>
+							<li>
+								Fixed: Maths integer division (rational number) don't promote to floating point.<br />
+								(Note: You can now use the <i>int()</i> function to explicitly return an integer result).
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.1.0.0896</td>
+								<td class="date">04 June 2015</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>NEW IN THIS RELEASE:</h5>
+						<ul>
+							<li>Added: Ability to export a Workspace as an archive.</li>
+							<li>Added: Telemetry security dialog is now resizable.</li>
+							<li>Added: Telemetry sources are now displayed in compact form (car number and driver).</li>
+							<li>Added: Rankine unit (TT#3788).</li>
+						</ul>
+
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: Possible hang/crash on exit.</li>
+							<li>Fixed: Search for the latest installed version of M1 Tune when retrieving logged data or viewing ECU config.</li>
+							<li>Fixed: Memory leak when track files have been renamed.</li>
+							<li>Fixed: Clear math/telemetry data cache on exit.</li>
+							<li>Fixed: Failed to load LD files with size greater than 2GB containing video sync information.</li>
+							<li>Fixed: Possible memory leaks whilst reconnecting Telemetry inputs.</li>
+							<li>Fixed: Auto loading from user specified folder not working.</li>
+							<li>Fixed: Load/Save telemetry credentials is not consistent with t2 Server behaviour.</li>
+							<li>Fixed: Slow values window redraw when clicking <i>Ok</i> from Properties dialog.</li>
+							<li>Fixed: Data Key telemetry selection rendering is not consistent with the Data Window.</li>
+							<li>Fixed: Time/Distance graph flickers when toggling a Telemetry source between Time/Distance mode.</li>
+							<li>Fixed: Main selection occasionally jumps to a previous selection when a Telemetry source receives a beacon.</li>
+							<li>Fixed: Unit mappings not loading during data import (TT#3795).</li>
+							<li>Fixed: Incorrectly formatted error message in maths dialog (TT#3810).</li>
+							<li>Fixed: Using an integer math constant in a function call results in a syntax error (TT#3816).</li>
+							<li>Fixed: Manually inserted beacons not correctly exported in LDX file (TT#3825).</li>
+							<li>Fixed: Channels window tree expand/collapse state not maintained across a data source selection change (TT#3797).</li>
+							<li>Fixed: Zero phase math filters regression.</li>
+							<li>Fixed: Telemetry may stop updating after a device power cycle causes a radio reset.</li>
+							<li>Fixed: Excel reports now accept *.xlsx in the browse dialog.</li>
+							<li>Fixed: Channel unit overrides not being applied correctly for some channels.</li>
+							<li>Fixed: Report Properties uncheck item toggles wrong item.</li>
+							<li>Fixed: Video Database is incorrectly initialised from last Video search folder.</li>
+							<li>Fixed: Telemetry setup should not be visible under Windows XP.</li>
+							<li>Fixed: Possible crash when receiving multiple telemetry streams.</li>
+							<li>Fixed: Possible hang when track distance calculation results in infinity.</li>
+							<li>Fixed: Data window overlay select/deselect not always taking effect (for telemetry streams).</li>
+							<li>Fixed: Possible crash when enumerating COM containers.</li>
+							<li>Fixed: <i>Reduce CPU usage during Animation</i> setting was not being saved.</li>
+							<li>Fixed: Avoid main selection being forced into view for Telemetry items.</li>
+							<li>Fixed: Print worksheet doesn't use full page extent.</li>
+							<li>Fixed: Crash when an in-use math constant is deleted (TT#3792).</li>
+							<li>Fixed: Crash when adding an empty channel list component(TT#3785).</li>
+							<li>Fixed: Crash when using <i>bit_decode()</i> math function (TT#3784).</li>
+							<li>Fixed: GPS track map background offset when using Google maps (TT#3782).</li>
+							<li>Fixed: Prompt for folder when <i>Downloading</i> a software update (TT#3793).</li>
+							<li>Fixed: Not always reconnecting when T2 input stream is lost</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.1.0.0802</td>
+								<td class="date">15 December 2014</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<!--
+									<h5>NEW IN THIS RELEASE:</h5>
+									<ul>
+									</ul>
+						-->
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: LD files marked with the temporary <b>'T'</b> attribute are not visible in the Open Dialog (TT#3725).</li>
+							<li>Fixed: Math constants defined in LDX files not found when evaluating expressions (TT#3747).</li>
+							<li>Fixed: Corrected Speed &amp; Distance settings not saved correctly for the Drag profile (TT#3748).</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.1.0.0794</td>
+								<td class="date">27 November 2014</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<!--
+									<h5>NEW IN THIS RELEASE:</h5>
+									<ul>
+									</ul>
+						-->
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: Crash reading an incorrectly formatted LDX file.</li>
+							<li>Fixed: variance_time/variance_dist math functions don't work with multiple overlay data selections.</li>
+							<li>Fixed: Maintain data selections for live telemetry when upstream config changes.</li>
+							<li>Fixed: Telemetry track selection not showing all available tracks.</li>
+							<li>Fixed: Database indexing not correctly processing some files.</li>
+							<li>Fixed: Check for software updates using incorrect product identifier.</li>
+							<li>Fixed: Reinstate fastest/total laps columns in Open Log File dialog.</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.1.0.0792</td>
+								<td class="date">13 November 2014</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>NEW IN THIS RELEASE:</h5>
+						<ul>
+							<li>New: Added support for the C127/C187 Dash</li>
+						</ul>
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: Using the GPS 'Lap Generator' results in no change</li>
+							<li>Fixed: Time/Distance Offset axis disappears when dragging thru zero point (TT#3728)</li>
+							<li>Fixed: Google Earth export loss of precision (TT#3734)</li>
+							<li>Fixed: Math function migration is case sensitive (TT#3735)</li>
+							<li>Fixed: Crash after migration of workspaces from 1.0 (TT#3736)</li>
+							<li>Fixed: Racepak CSV importer (TT#3740)</li>
+							<li>Fixed: Corrected Distance not calculated if logged speed channel selected (TT#3741)</li>
+							<li>Fixed: 2D/3D math table migration losing color/dps settings</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.1.0.0768</td>
+								<td class="date">28 October 2014</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>NEW IN THIS RELEASE:</h5>
+						<ul>
+							<li>New: User defined worksheet key-bindings</li>
+							<li>New: Added WebView component (telemetry only)</li>
+							<li>New: Added Picture component</li>
+							<li>New: <i>Check for Software Updates</i> capability</li>
+							<li>New: Improved memory management (large log files)</li>
+							<li>New: Improved maths performance (multi-core)</li>
+							<li>New: Improved rendering performance (multi-core)</li>
+							<li>New: Real-time maths capability</li>
+							<li>New: Real-time telemetry display capability (requires <b>T2 Server</b>)</li>
+							<li>New: Reports can be configured to exclude overlays</li>
+							<li>New: Tools|General|Search option to use a <i>loose</i> name match when searching for channels (TT 3548)</li>
+							<li>New: Zoom support for Scatter Plots (TT 3096, 3540, 3636)</li>
+							<li>New: Indexing of LD files (into a database) for faster searching in the 'File Open' dialog</li>
+							<li>New: Tooltips for long comment in data windows (TT 3642, 3649)</li>
+							<li>New: Added running min/max math functions (TT 3402)</li>
+							<li>New: Multiselect operation when configuring channel reports (TT 3148)</li>
+							<li>New: added workspace option to control maths precision: <i>single</i> - requires less memory, <i>double</i> - requires more memory</li>
+							<li>New: added <i>previous_sample(..)</i> maths function for point evaluator</li>
+							<li>New: added Public/Private key based decryption of T2 Telemetry data</li>
+						</ul>
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: Long channel names (&gt;32 characters) truncated when LD file loaded (TT#3727)</li>
+							<li>Fixed: M800 ECU Error Group 16 bit channels updated</li>
+							<li>Fixed: Inserting a channel via double click overwrites parenthesis in math expression dialog (TT 3701)</li>
+							<li>Fixed: ECU Error Group channels not displayed correctly (TT 3702)</li>
+							<li>Fixed: ECU Error Group channels not exporting with correct names (TT 3703)</li>
+							<li>Fixed: Cut/Paste of maths channel results in a different name (TT 3710)</li>
+							<li>Fixed: Math constants from other groups are not resolved (TT 3711)</li>
+							<li>Fixed: Use logical (case insensitive) sort in channel list</li>
+							<li>Fixed: Channel report 'statistic' order would change after lap inserted (TT3715)</li>
+							<li>Fixed: Locale with custom decimal separator not working (TT3719)</li>
+							<li>Fixed: Crash on Windows 8 when opening the Homegroup folder (TT 3687)</li>
+							<li>Fixed: Improved FFT calculations (closer correlation with MATLAB)</li>
+							<li>Fixed: Missing context menu on color legend for histo/scatter</li>
+							<li>Fixed: Command line to open workspace (-w &lt;workspace&gt;) and log file (-l &lt;logfile&gt;)</li>
+							<li>Fixed: Copy/Paste of maths constants (TT 3691)</li>
+							<li>Fixed: Math dependencies not updating when math channel shadows a logged channel</li>
+							<li>Fixed: Imported i2 1.0 math no longer need to force an explicit boolean expression for <i>choose</i> function</li>
+							<li>Fixed: COM Automation now allows encoded Beacon to be exported</li>
+							<li>Fixed: Setup Sheet processing sometimes results in stale values until file is saved</li>
+							<li>Fixed: Improve file detail visibility in File Open dialog</li>
+							<li>Fixed: CSV import/export laps (TT 3665)</li>
+							<li>Fixed: Text edit fails to process decimal after a locale change (TT 3669)</li>
+							<li>Fixed: Gauges hold last telemetry real-time value (TT 3672)</li>
+							<li>Fixed: Cannot datum link based on distance (TT 3650)</li>
+							<li>Fixed: stat_ functions don't work on live data (TT 3400, 3593)</li>
+							<li>Fixed: DDE output name resets every time a new config is uploaded (TT	3424)</li>
+							<li>Fixed: range_change math function doesn't work for live data (TT 3592)</li>
+							<li>Fixed: Tables don't work for live data (TT 3594)</li>
+							<li>Fixed: Drag Workspace - 1 second margin not visible (TT 3596)</li>
+							<li>Fixed: Lap times now visible in 'Open File' database/explorer views (TT 3604, 3658)</li>
+							<li>Fixed: File names now visible in 'Open File' database/explorer views (TT 3605)</li>
+							<li>Fixed: Sort order arrows incorrect in 'Open File' (TT	3607)</li>
+							<li>Fixed: Opening multiple log files not working correctly (TT 3609, 3643)</li>
+							<li>Fixed: No visual cue to exit full screen mode (TT	3610)</li>
+							<li>Fixed: i2 crash when toggling overlays in scatter plot (TT 3612)</li>
+							<li>Fixed: CSV import not working for some files (TT	3616)</li>
+							<li>Fixed: Can't generate trackmap with telemetry data (TT 3647)</li>
+							<li>Fixed: Reduce minimum status light size (TT 3648)</li>
+							<li>Fixed: A deleted .ldx file doesn't update the LD database correctly</li>
+							<li>Fixed: Setup Sheet details don't match when .xlsx or .xlsm files exist</li>
+							<li>Fixed: Custom .ldx file details are missing after migration (TT 3585)</li>
+							<li>Fixed: Venue/Driver/Session text clipped in Data window (TT 3580)</li>
+							<li>Fixed: Workbooks dropdown needs extra width (TT 3581)</li>
+							<li>Fixed: Import fails when converting <i>txt, csv</i> data sets</li>
+							<li>Fixed: Overlay alignment sometimes incorrect after beacon transition in distance mode</li>
+							<li>Fixed: Treat underscore as a valid word separator when searching (TT 3571)</li>
+							<li>Fixed: Lap Anchored Telemetry Mode displays more than track length in distance mode</li>
+							<li>Fixed: Distance mode not working correctly when <i>Corrected Speed G Correction</i> enabled</li>
+							<li>Fixed: File Open <i>Driver/Vehicle/Venue</i> filters don't take effect</li>
+							<li>General bug fixes</li>
+							<li>Cosmetic user interface improvements</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.0.21.0066</td>
+								<td class="date">28 October 2014</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: Long channel names (&gt;32 characters) truncated when LD file loaded (TT#3727)</li>
+							<li>Fixed: M800 ECU Error Group 16 bit channels updated</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.0.21.0062</td>
+								<td class="date">06 October 2014</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: LDX detail loading should be case insensitive</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.0.21.0058</td>
+								<td class="date">05 September 2014</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: COM Automation now allows encoded Beacon to be exported</li>
+							<li>Fixed: Setup Sheet processing sometimes results in stale values until file is saved</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.0.21.0053</td>
+								<td class="date">20 June 2014</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>NEW IN THIS RELEASE:</h5>
+						<ul>
+							<li>New: "power" math function now supports a channel based exponent</li>
+						</ul>
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Improved RacePak ASCII importer support</li>
+							<li>Fixed: Query API request fails if i2API activation has expired</li>
+							<li>Fixed: Crash when applying a time_shift to a math channel </li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.0.21.0030</td>
+								<td class="date">2 August 2013</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>NEW IN THIS RELEASE:</h5>
+						<ul>
+							<li>New: Allowed Drag, Engine profile to export to Google Earth  (TT 3312)</li>
+							<li>New: Added suspension histogram component to Drag profile (TT 3313)</li>
+							<li>New: Added version information to the title (TT 3319)</li>
+							<li>New: Allowed Time Format to be changed in Channel Report (TT 3322)</li>
+							<li>New: Added "pulse_width" math function</li>
+							<li>New: Added support for importing alternate Pi CSV log file formats</li>
+							<li>New: Added support for importing CSV log files without a details section (TT 3094)</li>
+						</ul>
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: Math Constants always show up red (TT 3174)</li>
+							<li>Fixed: GPS corrections fail if GPS Latitude or Longitude don't exist (TT 3217)</li>
+							<li>Fixed: Corrected Distance calculated from Lap Distance channel fails (TT 3254)</li>
+							<li>Fixed: Crash when opening certain log files (TT 3255)</li>
+							<li>Fixed: M800 Error/Status group definitions (TT 3291)</li>
+							<li>Fixed: Project corrupted after hibernation (TT 3305)</li>
+							<li>Fixed: Math Constants cannot be resolved (TT 3306)</li>
+							<li>Improved i2 API performance (TT 3309)</li>
+							<li>Fixed: i2 API license failure (TT 3310)</li>
+							<li>Fixed: Google Maps URL retrieve failure (TT 3311)</li>
+							<li>Fixed: Histogram scaling incorrect when gating is enabled (TT 3318)</li>
+							<li>Fixed: HD-VCS video sync</li>
+							<li>Fixed: Lap stretch may fail if Beacon offset is applied (TT 3365)</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.0.20.0008</td>
+								<td class="date">31 August 2012</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>NEW IN THIS RELEASE:</h5>
+						<ul>
+							<li>Added: Recall state of single color for main option when loading previous data with project (TT 2874)</li>
+							<li>Added atan2 maths function (TT 3097)</li>
+							<li>Improved performance of channel report builds</li>
+							<li>Added support for exporting channel reports to Microsoft Excel (TT 2150, 3010, 3012)</li>
+							<li>Channel reports now display multiple outings in date/time order (TT 3014)</li>
+							<li>Scatter plot option to force trend equations to go through zero (TT 2579, 2908)</li>
+							<li>Allow editing of maths expressions without having data loaded (TT 2936)</li>
+							<li>Channel reports now support zoom linked ranges (TT 2873)</li>
+							<li>i2API: Allow data retrieval at specified rate (may differ from the logged rate) (TT 2789)</li>
+							<li>i2API: Added support for data retrieval within a specified range</li>
+							<li>i2API: Added support for exporting of CSV files (TT 2659)</li>
+							<li>Added integrate_dist() math function (integration over distance channel) (TT 3011)</li>
+							<li>Show heading arrows on GPS track (TT 2584)</li>
+							<li>Added support for selecting and editing multiple channels in channel editor</li>
+							<li>Prevent in/out laps from being identified as fastest laps if no trusted laps exist (TT 2485)</li>
+							<li>Include alias channels in exports (TT 3057)</li>
+							<li>Added Google Maps support for GPS track background (TT 2583)</li>
+							<li>Scatter plot option to specify the number of significant digits shown in a trend line equation (TT 2866)</li>
+							<li>Scatter plot allow trend equation to be copied to the clipboard (TT 2550)</li>
+							<li>Allow global maths constants to be referenced from other math groups (TT 2933)</li>
+							<li>Show the current path in the open log file screen, and allow the path to be copied to the clipboard (TT 3026)</li>
+							<li>Added M1 start/stop device events</li>
+							<li>Added support for invalidating of GPS speed channel according to status channel (TT 1668)</li>
+							<li>Added: Zeroing of GPS speed channels and invalidating selected channels (TT 1669)</li>
+							<li>Change default track map generation type (TT 3048)</li>
+							<li>Allow comments in math expressions (TT 3027)</li>
+							<li>Added find/replace utility for replacing channel names in open projects</li>
+							<li>Support for new M1 channel naming conventions</li>
+							<li>Added explanatory text in 'Find and Replace' utility (TT 3171)</li>
+						</ul>
+						<h5>FIXED IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: Exporting a log file can truncate channel names to 32 characters (TT 3189)</li>
+							<li>Fixed: Bit channels may be excluded from export/split (TT 2919, 2967)</li>
+							<li>Fixed: Avoid loading of duplicate bit channels</li>
+							<li>Fixed: Standard deviation figures in channel reports can be incorrect when display units are different to base units</li>
+							<li>Fixed: Channel reports results may appear incorrectly</li>
+							<li>Fixed: Manual time markers and video sync points not exported correctly (TT 2804, 3087)</li>
+							<li>Fixed: Overlayed data is not always displayed in scatter plot (TT 3085)</li>
+							<li>Fixed: Track maps generated from tracks with a high number of reference points won't open in Telemetry Monitor (TT 1577, 2501)</li>
+							<li>Fixed: Toolbar doesn't fit with default application size (TT 2993)</li>
+							<li>Fixed: Time reports don't update with a beacon offset (TT 2549)</li>
+							<li>Fixed: Keyboard shortcuts don't work in numerical edit controls (TT 2997)</li>
+							<li>Fixed: Corrected file size sort order in open log file screen (TT 2959)</li>
+							<li>Fixed: On/Off channels used as the result of an advanced maths expression do not function correctly (TT 2775)</li>
+							<li>Fixed: Reference laps can be created with the wrong lap distance (TT 2335)</li>
+							<li>Fixed: Splitting a log file does not check if file names already exist (TT 2168)</li>
+							<li>Fixed: Pasting a component from the clipboard ignores distance mode setting (TT 2438)</li>
+							<li>Fixed: Auto-complete doesn't show correctly in maths expression editor</li>
+							<li>Fixed: i2 doesn't import csv file with single channel (TT 3186)</li>
+							<li>Fixed: i2 API crashes (TT 3187)</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.0.19.0021</td>
+								<td class="date">02 May 2012</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>CHANGES IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed intermittent crash that can occur when using a scatter plot and zooming full out (TT 3018)</li>
+							<li>Fixed intermittent crash that can occur when using overlays</li>
+							<li>Fixed crash that can occur after viewing reports</li>
+							<li>Improved dock window color and contrast</li>
+							<li>Added automatic lap generation using GPS data for multiple log files (TT 2853)</li>
+							<li>Fixed: Background-processing of certain videos may cause a crash</li>
+							<li>Fixed: Incorrectly registering i2 Pro interfaces as part of the i2 Standard type library (TT 2734)</li>
+							<li>Added: Automatically load log files when placed in a user-specified folder (TT 2932)</li>
+							<li>Double-clicking on the data key now brings up the color edit dialog instead of the color scheme page of the main options dialog (TT 2941)</li>
+							<li>Previous lap selections are recalled when "load previous data with project" is selected (TT 2939)</li>
+							<li>Fixed: User interface may freeze during a log unload (TT 2486)</li>
+							<li>Fixed: Logs not opening in i2 after a log unload after the logging directory has changed</li>
+							<li>Cosmetic improvements made to log unload and view config splash screens</li>
+							<li>Added overlay min/max/avg statistics to the time/dist graph (including hover highlight support) (TT 2943)</li>
+							<li>Changing datum (from a Time/Distance graph) causes all "linked" components to update (TT 2940)</li>
+							<li>Added datum cursor (read-only) to the scatter plot</li>
+							<li>Added scientific notation support to script (TT 2934)</li>
+							<li>Improved docking system on Windows XP (TT 2938)</li>
+							<li>Add margin and remove client edge for channels dock window</li>
+							<li>Allow unpinned dock window to be clicked to open/close</li>
+							<li>Fixed: View device config not working with SDL3 Manager (TT 2830, 2915)</li>
+							<li>Added support for CDL3</li>
+							<li>Added MoTeC CSV data converter for AiM import (TT 2960)</li>
+							<li>Prevent blank license request (TT 2935)</li>
+							<li>Exclude zero lat/long samples when drawing gps track maps or exporting to google earth (TT 2898)</li>
+							<li>
+								Added angle% unit so that channels (like Throttle Position) map correctly to a % unit (TT 1844)
+							</li>
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.0.18.0017</td>
+								<td class="date">10 August 2011</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>CHANGES IN THIS RELEASE:</h5>
+						<ul>
+							<li>Added: Extend zoom selection (Shift+Click within the zoom summary bar)&nbsp; (TT 2847)</li>
+							<li>Added: Save/Restore zoom selection across outing selections (TT 2849)</li>
+							<li>Added "Print to Clipboard"&nbsp;support (TT 2850)</li>
+							<li>Added "Select all fast laps" hotkey: Ctrl+Alt+F (Defect 2851)</li>
+							<li>Fixed: GPS beacon insert shows in-correct lap times (TT 2857)</li>
+							<li>Fixed: "Reference Lap" export folder now Windows 7 compliant&nbsp; (TT 2860)</li>
+							<li>Fixed: Numeric details being rounded after reopening the log file (TT 2891)</li>
+							<li>Fixed: Google Earth files not displaying coordinates correctly (TT 2337) </li>
+							<li>Fixed: Alias channel colours vary across outings (TT 2665)</li>
+							<li>Fixed: "Edit Details" icon state incorrectly shown (TT 2754)</li>
+							<li>Fixed: Track Maps generated using GPS sometimes cause Time Report summary inconsistency (TT 2806)</li>
+							<li>Improved: "XY Plot" calculation and rendering times (TT 2839)</li>
+							<li>Improved: "Add Video File" dialog maintains last folder, supports .mp4 extension (TT 2777, 2801)</li>
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.0.17.0014</td>
+								<td class="date">19 May 2011</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>CHANGES IN THIS RELEASE:</h5>
+						<ul>
+							<li>Fixed: Video synchronisation not working when multiple copies of the same video exist</li>
+							<li>Fixed: Unable to view ACL device configuration unless a dash manager is installed (TT 1826)</li>
+							<li>Added "Corrected GPS..." Tool menu item to all project types (TT 2348)</li>
+							<li>Fixed: GPS speed channel becomes incorrect if you overlay GPS file with non GPS file (TT 2818)</li>
+							<li>Improved feedback when a video cannot be played due to codec incompatibility (TT 2819)</li>
+							<li>Added ability to add/remove/edit custom details (TT 2755)</li>
+							<li>Added multi-select operations to the maths dialog (TT 2766)</li>
+							<li>Added GPS time alignment mode (TT 2767)</li>
+							<li>Added Units for Curvature (TT 2802)</li>
+							<li>Fixed: Channel Report doesn't update when Setup Sheet changed (TT 2573)</li>
+							<li>Allow Math Plugins to generate channels with existing names (TT 2759)<br />(Note: To use this feature, your math plugin must support the new IMtcMathPluginExt1 interface)<br /></li>
+							<li>Added variance_dist(x) math function for calculating distance based variance of any channel (TT 2762)<br />(Note : Variance data is only sensible within the main selection)<br /></li>
+							<li>Added a Time based Colour graph (TT 2764)</li>
+							<li>i2API: Allow separate (single connect) i2 sessions (TT 2779)</li>
+							<li>i2API: Don't update Project MRU on exit (TT 2790)</li>
+							<li>i2API: CreateDataArray can calculate one sample short (TT 2791)</li>
+							<li>Added option to display video synchronisation points in time/distance graphs</li>
+							<li>Fixed issue with projects failing to load after GPS latitude/longitude channels are modified (TT 2737)</li>
+							<li>Added: Device event annotations</li>
+							<li>Improved: Logging decoder now only splits files when log setups differ. It adds device events for firmware start and power cycles</li>
+							<li>Fixed: Video files associated with log files more than once</li>
+							<li>Added: Automatic video synchronisation support for videos created with MoTeC VCS (TT 2430)</li>
+							<li>Added: M84 ECU Support</li>
+							<li>Added ASF media files to list of supported media file types (TT 2016)</li>
+							<li>Improved feedback during background operations (TT 2023)</li>
+							<li>Improved feedback for automatic video synchronisation operations (TT 2022)</li>
+							<li>Video search folders are now are searched recursively (TT 2024)</li>
+							<li>Fixed: Conversion wizard crash (TT 2709)</li>
+							<li>Added: i2 API support for exporting of MATLAB files (TT 2659)</li>
+							<li>Fixed: i2 API issue with creating a data source if time/distance graph is in distance mode (TT 2649)</li>
+							<li>Improved: i2 API rules for providing sample data&nbsp;are now less strict (TT 2658)</li>
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.0.10.0035</td>
+								<td class="date">28 September 2010</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>CHANGES IN THIS RELEASE:</h5>
+						<ul>
+							<li>Improved: Networked setup sheets (TT 1358)</li>
+							<li>Improved: Improve background colors for GPS Track (TT 1613)</li>
+							<li>Fixed: i2 GPS Corrections does not remove duplicate samples (TT 1661)</li>
+							<li>Improved: Setup sheet compatibility in Excel 2007 (TT 1892)</li>
+							<li>
+								Improved: Auto beacon on GPS position in i2 (TT 1986)
+								<ul style="margin-top:0cm;">
+									<li>Go to "Tools | Lap Editor", click "by GPS ..." button in the "Auto Insert" group. </li>
+									<li>Latitude and Longitude of current cursor position is auto selected.</li>
+								</ul>
+							</li>
+							<li>Improved: Reset Dock Windows (TT 2147)</li>
+							<li>Fixed: Random Lap ordering in channel report (TT 2213)</li>
+							<li>Improved: Ability to create folders in open menu of i2 (TT 2346)</li>
+							<li>Fixed: Old FFT plots won't zoom link (TT 2539)</li>
+							<li>Fixed: FFT y-axis label always shows auto scaled values (TT 2541)</li>
+							<li>Fixed: Lap marker chart zoom level continuously updates with cursor (TT 2542)</li>
+							<li>Fixed: i2 math is now case sensitive, wasn't before (TT 2555)</li>
+							<li>Improved: Ability to add Beacons via the API (TT 2602)</li>
+							<li>Improved: Device reset creates a single partial lap (TT 2605) </li>
+							<li>Added: Support displaying long channel names and enumerated values </li>
+							<!-- i2 Beta - 1.09.0053 (5 May 2010) -->
+							<li>"Cancel" option for calculating FFT plot data (TT 1654)</li>
+							<li>Automatically update start lap number (TT 2349)</li>
+							<li>Cursor does not identify when dragging channels onto graphs(TT 2365)</li>
+							<li><st1:place w:st="on">Vista</st1:place> does not display all of units in math editor (TT 2366)</li>
+							<li>Logged ECU Error/Statuses groups not extracted or incorrect in exported files (TT 2397)</li>
+							<li>SDL3 view device config doesn't work (TT 2420)</li>
+							<li>i2 freezes when a split is missing on a Time Report of split times (TT 2436)</li>
+							<li>Integer overflow when exporting data (TT 2461)</li>
+							<li>Log files are opening up with lap 0 as first flying lap instead of lap 1 (TT 2467)</li>
+							<li>Single click or key shortcut to maximise component (TT 2499)</li>
+							<li>Venue name has character length limitation in i2 but not dash manager (TT 2507)</li>
+							<!-- i2 Beta - 1.08.0054 (1 March 2010) -->
+							<li>Added: Ability to take two log files, offset one from the other and then combine the channels into a single (exported) log file</li>
+							<li>Fixed: Error / Status Channels would not display. (TT 2396)</li>
+							<!-- i2 Beta - 1.07.0012 (8 December 2009)-->
+							<li>Fixed: i2 would not show status/error channels (TT 2364)</li>
+							<li>Improved: Remove a unit override on a channel if it cannot be applied to all open files in a project</li>
+							<!-- i2 Beta - 1.07.0001 (10 November 2009)-->
+							<li>Added: Help Topics about each Data Importer in the i2 Pro File Conversion Wizard</li>
+							<li>Added: File Conversion Wizard sample input files (C:\Program Files\MoTeC\i2\1.0\Samples\ConversionSamples)</li>
+							<li>
+								New Activatable Feature
+								<ul>
+									<li>
+										<b>Import from RacePak ASCII Dataset</b>
+										<br />Allow the File Conversion Wizard in i2 Pro to convert from RacePak ASCII DataSet files to MoTeC Pro log files. (TT 1799)<br />
+									</li>
+								</ul>
+							</li>
+							<!-- i2 Beta - 1.06.0006 (15 October 2009)-->
+							<li>
+								New Activatable Feature
+								<ul>
+									<li>
+										<b>Import from EFI ASCII Dataset</b><br />
+										Allow the File Conversion Wizard in i2 Pro to convert from EFI ASCII DataSet files to MoTeC Pro log files.<br />
+									</li>
+								</ul>
+							</li>
+							<li>Improved: Export data now allows export of specific maths channels without needing to export all channels (TT 1656, 1967)</li>
+							<li>Fixed: Copy of a scatter plot now maintains manual scaling (TT 1648)</li>
+							<li>Improved: Data window now sorts the file order according to the file details (TT 1849)</li>
+							<li>Fixed: reference lap  creation no longer removes leading zeroes (TT 1884)</li>
+							<li>Fixed: Venue length no longer rounds to 0dps for lengths in Miles (TT 1906)</li>
+							<li>Improved: Search now finds characters within brackets (TT2079)</li>
+							<li>Improved: Annotations now more visible. (TT 2207)</li>
+							<li>Fixed: GPS Lat and Long value export (TT 2279)</li>
+							<li>Fixed: Copy and paste from open file dialogue (TT 2284)</li>
+							<li>Improved: split of exported files now only exports real channels (TT 2327)</li>
+							<li>Added: VB.net sample file for i2 API (C:\Program Files\MoTeC\i2\1.0\Samples\i2API\VB.NET)</li>
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="release">
+					<div class="version">
+						<table>
+							<tr>
+								<td class="revision">Version 1.0.5.0013</td>
+								<td class="date">25 September 2009</td>
+							</tr>
+						</table>
+					</div>
+					<div class="content">
+						<h5>NEW IN THIS RELEASE:</h5>
+						<ul>
+							<li>The MoTeC Activation System allows certain features in i2 Pro to be enabled through the use of an Activation File.</li>
+							<li>Customers can purchase an Activation File through the MoTeC Dealer Network.</li>
+							<li>An Activation File allows particular features to operate for an amount of time, typically one year.</li>
+							<li>i2 will give the user notification before any feature expires.</li>
+							<li>An Activation will only operate on one physical computer.</li>
+							<li>
+								New Activatable Features
+								<ul>
+									<li><b>Open MoTeC Standard Log Files in i2 Pro</b><br />Allows i2 Pro to open Standard Log Files, which are files that were created on hardware without the Pro Analysis upgrade.<br /></li>
+									<li><b>Import from Pi ASCII Dataset</b><br />Allow the File Conversion Wizard in i2 Pro to convert from Pi Toolbox Versioned ASCII DataSet Version 2 files to MoTeC Pro log files.<br /></li>
+									<li>
+										<b>i2 API - i2 Application Programming Interface - requires i2 API Feature Licence</b><br />The i2 API is a software object that allows you to <u>access and manipulate i2 and Log File data</u> from tools including Excel, Matlab, VB, C#, etc.<br />
+										<ul>
+											<li>Load any kind of MoTeC Log File (.ld file).</li>
+											<li>Read Log File data including channels, ranges/laps/beacons and details.</li>
+											<li>Create new Log Files and channels.</li>
+											<li>Export Pro Log Files.</li>
+											<li>The i2 API can be used from any language that supports COM technology.</li>
+											<li>Please refer to the sample file for details of how the API is used.</li>
+											<li>To use this feature, purchase an i2 API Feature Licence from your MoTeC dealer.</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>
+								Ignored Beacons
+								<ul>
+									<li>i2 is now aware of beacons that are logged within the Beacon Ignore Time. They are displayed as Ignored Beacons and laps are not generated from them. (TT 1507)</li>
+									<li>Please upgrade your Manager Software to the latest version to enable this feature.</li>
+								</ul>
+							</li>
+						</ul>
+						<h5>CHANGES IN THIS RELEASE:</h5>
+						<ul>
+							<li>Added: User Adjustment of Videos Automatically Aligned with a VSM. (TT 2026)</li>
+							<li>Improved: Video Playback though the use of high quality codec. (TT 2020)</li>
+							<li>Fixed: i2 problem filtering alias channels (TT 1498)</li>
+							<li>Fixed: Filter of channel causing data offset in i2 (TT 1664)</li>
+							<li>Fixed: Channel Report bug with logged channels from 32 bit advanced math (TT 1885)</li>
+							<li>Fixed: Sort order when sort by sample rate in the channel editor is used (TT 1893)</li>
+							<li>Fixed: 32 bit condition channels get displayed as N/A (TT 1943)</li>
+							<li>Added: Switch for channel report to ignore interpolated data in i2 (TT 1905)</li>
+							<li>Added: GetValue(t) function to Maths Plugins and i2 API. Obtains a channel value interpolated at time t.</li>
+							<li>Fixed: File open dialog has a long delay when displaying a folder containing many large log files (TT 2247)</li>
+							<li>Fixed: i2 crash on open log file (TT 1690)</li>
+							<li>Fixed: i2 crashes when exporting a Channel Report.</li>
+							<li>Fixed: Downloading device from "i2" doesn't load data afterwards.</li>
+							<li>Fixed: i2 doesn't create telemetry track maps if the directory hasn't been created.</li>
+							<li>Added: Ability to take derivative of a channel WRT another channel.</li>
+							<li>Fixed: i2 downloads from ADL3 instead of ADL2 when selected. (TT 1875)</li>
+							<li>Fixed: Get log data from i2, selecting ADL2 opens ADL3 manager. (TT 1995)</li>
+							<li>Fixed: Fastest Lap time is updated consistently and shows up in the file open screen correctly. (TT 1762)</li>
+							<li>Fixed: Trusted Laps settings are saved. (TT 1765)</li>
+							<li>Fixed: File &gt; Get Logged Data caused crash if wrong device is selected.</li>
+							<li>Improved: i2 now notifies the user when it runs out of memory allocating a channel and write a note in the View | Messages window.</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+ <script type="text/javascript">
+
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+	coll[i].addEventListener("click", function() {
+		this.classList.toggle("active");
+		var content = this.nextElementSibling;
+		if (content.style.maxHeight){
+		  content.style.maxHeight = null;
+		} else {
+		  content.style.maxHeight = content.scrollHeight + "px";
+		}
+	});
+  }
+ </script>
+
+</body>
+</html>

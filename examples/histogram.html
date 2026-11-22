@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Speed distribution · HTML component example</title>
+<script defer src="../web/telemetry-elements.js"></script>
+<style>body{max-width:880px;margin:5vh auto;padding:16px;font:15px system-ui}h1{font-size:24px}</style>
+</head><body>
+<h1>Speed distribution</h1>
+<dv-hist label="Speed distribution" frame="neumorphic" plot-style="pattern">
+  <script type="application/json">
+  {
+    "data": [{"name":"Lap 02","x":[80,100,120,140,160,180],"y":[4,16,28,24,18,10]}],
+    "layout": {
+      "xaxis":{"title":{"text":"Speed (km/h)"}},
+      "yaxis":{"title":{"text":"Samples (%)"}}
+    }
+  }
+  </script>
+</dv-hist>
+</body></html>

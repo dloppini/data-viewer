@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HTML library · Data Viewer</title><link rel="icon" href="data:,">
+<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/demo.css">
+<link rel="stylesheet" href="/scatter.css"><script defer src="/telemetry-elements.js"></script><script defer src="/scatter-host.js"></script><script defer src="/library.js"></script><script defer src="/web/workspace-nav.js"></script></head>
+<body><a class="skip" href="#example">Skip to component</a>
+<header class="top"><div class="workspaceLinks"><a class="brand" href="/" aria-label="Data Viewer dashboard"><svg viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="currentColor"/><path d="m5 22 7-1 5-12 2 17 5-13 5-1" fill="none" stroke="white" stroke-width="2.4" stroke-linejoin="round"/></svg>Data Viewer</a><nav class="workspaceTabs" aria-label="Workspaces" data-current="/library"></nav></div>
+</header>
+<main class="componentLibrary">
+<div class="libraryBar">
+<label>Component<select id="object"></select></label>
+<label>Frame<select id="frame"><option value="apple">Apple</option><option value="neumorphic">Neumorphic</option><option value="clean">Clean</option></select></label>
+<label>Plot style<select id="content"><option value="fine">Fine</option><option value="bold">Bold</option><option value="pattern">Patterned</option></select></label>
+<label>Theme<select id="toneChoice"><option value="light">Light</option><option value="dark">Dark</option></select></label>
+<button type="button" id="scatterSettings" class="scatterAction" hidden>Scatter settings</button>
+</div>
+<section id="example" tabindex="-1" aria-labelledby="title"><div class="libTitle"><h1 id="title">HTML library</h1><code id="tagName"></code></div>
+<p id="caption"></p><div id="preview"></div><p id="status" role="status">Loading…</p></section>
+<div class="libraryFooter"><details><summary>Use in HTML</summary><pre id="snippet"></pre><p id="embedHint"></p></details>
+<div class="actions"><a href="/telemetry-elements.js" download="telemetry-elements.js">Download JS library</a><button type="button" id="exportData" disabled>Download data JSON</button><button type="button" id="export" disabled>Download HTML example</button></div></div>
+</main></body></html>

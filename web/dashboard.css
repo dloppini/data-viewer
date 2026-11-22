@@ -1,0 +1,27 @@
+.guide{min-height:100vh}.guideShell{display:grid;grid-template-columns:minmax(192px,242px) minmax(0,1fr);max-width:1720px;margin:auto;min-height:calc(100vh - 64px)}
+.guideShell>.contents{padding:32px 18px 28px;background:var(--side);border-right:1px solid var(--border);min-width:0}
+.contents h2{margin:0 10px 14px;font:650 14px var(--font);color:var(--ink)}
+.contents nav{display:grid;gap:3px}.contents nav a,.sourceFile{display:block;text-decoration:none;color:var(--muted);font-weight:500;padding:8px 10px;border-radius:6px;line-height:1.32}
+.contents a[aria-current=location]{background:var(--select);color:var(--accent);font-weight:650}.contents nav a:hover,.sourceFile:hover{color:var(--ink);background:var(--wash)}
+.sourceFile{margin-top:18px;border-top:1px solid var(--border);border-radius:0;padding-top:15px;font-size:12px}
+.manual{padding:clamp(30px,4vw,68px) clamp(25px,5vw,82px);min-width:0}.manual article{max-width:1080px;margin:auto}
+.manual article[hidden]{display:none}.manual h1,.referencePage h1{font:650 clamp(32px,3.1vw,48px)/1.05 var(--font);letter-spacing:-.045em;margin:0 0 16px}
+.manual article>p:first-of-type{font-size:17px;line-height:1.55;color:var(--muted);max-width:77ch;margin:0 0 28px}
+.manual p,.manual li,.referencePage p{line-height:1.58;max-width:88ch}.manual h3,.referencePage h2{font:650 20px/1.2 var(--font);margin:25px 0 10px;letter-spacing:-.02em}
+.manual table,.referencePage table{width:100%;border-collapse:collapse;background:var(--panel);font-size:14px;line-height:1.48}
+.manual td,.manual th,.referencePage td,.referencePage th{text-align:left;vertical-align:top;border-bottom:1px solid var(--border);padding:10px 13px}
+.manual th,.referencePage th{font-size:12px;background:var(--wash);color:var(--muted)}.manual td:first-child{font-weight:600}
+.manual code,.referencePage code{font:0.92em Consolas,monospace;overflow-wrap:anywhere}.manual pre{padding:15px 20px;border:1px solid var(--border);border-radius:var(--radius);background:var(--panel);overflow:auto;line-height:1.5}
+.manual a,.referencePage a{color:var(--accent);text-underline-offset:3px}.download{text-decoration:none;color:var(--panel);background:var(--ink);border-radius:7px;padding:8px 12px;font-weight:650}.download span{font-size:10px;margin-left:4px;opacity:.8}
+.flowBox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:18px 0 24px}
+.flowHead,.flowFoot{padding:15px 19px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.flowHead{border-bottom:1px solid var(--border)}.flowHead h2{margin:0;font-size:17px}.flowHead label{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.flowNodes{list-style:none;display:flex;align-items:stretch;gap:22px;margin:0;padding:35px 20px;background-color:var(--wash);background-image:radial-gradient(var(--border) 1px, transparent 1px);background-size:12px 12px}
+.flowNodes li{position:relative;flex:1;min-width:0}.flowNodes li+li:before{content:"→";position:absolute;left:-20px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.flowNodes button{min-height:70px;width:100%;text-align:left;border-radius:8px;padding:9px 11px;border:1px solid var(--border);background:var(--panel);font-weight:650;line-height:1.25}
+.flowNodes small{display:block;font-weight:400;font-size:11px;color:var(--muted);margin-top:6px}.flowNodes button[aria-pressed=true]{border-color:var(--accent);box-shadow:inset 0 2px var(--accent);color:var(--accent)}
+.flowFoot{align-items:flex-start;display:block;min-height:90px;border-top:1px solid var(--border)}.flowFoot strong{font-size:15px}.flowFoot p{margin:3px 0;color:var(--muted)}.flowFoot code{font-size:12px}
+.flowNote{font-size:14px}.jumpList{display:flex;gap:10px 22px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--border)}
+.nativeExample{border-top:1px solid var(--border);margin-top:22px}.nativeExample button{margin-right:8px}
+.referencePage{max-width:1040px;padding:36px 24px;margin:auto}.referencePage h1{margin-top:20px}
+@media(max-width:1000px){.guideShell{grid-template-columns:188px minmax(0,1fr)}.manual{padding:30px 22px}.flowNodes{gap:17px;padding:24px 12px}.flowNodes li+li:before{left:-16px}.flowNodes button{padding:9px 7px}}
+@media(max-width:760px){.guideShell{display:block}.guideShell>.contents{border:0;padding:12px}.contents nav{display:flex;flex-wrap:wrap}.contents nav a{padding:5px}.sourceFile{margin:0;padding:5px}.flowNodes{flex-wrap:wrap}.flowNodes li{min-width:115px}.manual{padding:24px 12px}}

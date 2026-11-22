@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" data-style="apple" data-tone="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Data Viewer · Telemetry workbook</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/scatter.css"><script defer src="/telemetry-elements.js"></script><script defer src="/scatter-host.js"></script><script defer src="/app.js"></script><script defer src="/web/workspace-nav.js"></script></head>
+<body>
+<a class="skip" href="#main">Skip to worksheet</a>
+<header class="top"><div class="workspaceLinks"><a class="brand" href="/" aria-label="Data Viewer dashboard"><svg viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="currentColor"/><path d="m5 22 7-1 5-12 2 17 5-13 5-1" fill="none" stroke="white" stroke-width="2.4" stroke-linejoin="round"/></svg>Data Viewer</a><nav class="workspaceTabs" aria-label="Workspaces" data-current="/workbook"></nav></div>
+<div class="topTools"><label class="styleLabel">Frame <select id="style"><option value="apple">Apple</option><option value="soft">Neumorphic</option><option value="clean">Clean</option></select></label>
+<label class="styleLabel">Plot style <select id="plotStyle"><option value="fine">Fine</option><option value="bold">Bold</option><option value="pattern">Patterned</option></select></label>
+<button id="tone" aria-label="Switch to dark theme" title="Change theme"></button><span class="sep"></span><button id="open" class="primary"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7V5h6l2 3h9v3M3 9h18l-3 10H3z"/></svg>Open log</button></div></header>
+<div class="shell"><aside aria-label="Session and worksheets">
+<div class="session"><div class="sectlabel"><span>Demo session</span><span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
+<h2>Levante Circuit</h2><div class="sub">GT test <span>·</span> 4 laps</div>
+<svg id="miniTrack" role="img" aria-label="Simulated track outline showing the cursor position" viewBox="0 0 200 80"></svg>
+<div class="mapfoot"><span>3.40 km</span><span>3 sectors</span></div></div>
+<div class="session" id="localSession" hidden><div class="sectlabel">Local file</div><h2 id="localName"></h2><div id="localCount" class="sub"></div></div>
+<nav id="tree" aria-label="Analysis worksheets"></nav>
+<div class="sidefoot"><a href="/#map">System map</a><a href="/#logs">Working with logs</a><a href="/#resources">Studies and references</a></div>
+</aside><main id="main" tabindex="-1">
+<div class="crumb"><span>Workbook</span><span aria-hidden="true">/</span><b id="family">Traces</b><a class="libraryEntry" href="/library">Open in library</a><label class="mobileNav">Worksheet <select id="mobileView"></select></label></div>
+<div class="titleRow"><div><h1 id="heading">Channel history</h1><p id="desc">Speed, throttle and brake over a lap.</p></div></div>
+<div id="demoControls" class="toolbar">
+<label class="lapField"><span class="key active"></span>Active lap <select id="lap" aria-label="Active lap"></select></label>
+<label class="lapField"><span class="key reference"></span>Reference <select id="ref" aria-label="Reference lap"></select></label>
+</div>
+<section id="board" aria-label="Analysis worksheet"><header class="boardhead"><div><span class="glyph" id="plotIcon"></span><h2 id="boardTitle">Speed and pedals</h2></div><div id="axisGroup" class="segment" role="group" aria-label="Horizontal axis"><button id="distance" aria-pressed="true">Distance</button><button id="time" aria-pressed="false">Time</button></div></header>
+<div id="logControls" hidden><label>Plot <select id="logPlot"><option value="trace">Time history</option><option value="scatter">Scatter</option></select></label><label id="logChannel">Channel <select id="channel"></select></label><label>From (s) <input id="from" type="number" step="any"></label><label>To (s) <input id="to" type="number" step="any"></label><button id="apply">Apply</button><button id="all">Full range</button><button id="demo">Back to demo</button></div>
+<div id="plot"></div><div id="logInfo" hidden></div>
+<div id="cursorBar"><label for="cursor">Cursor <output id="marker"></output></label><input id="cursor" type="range" min="0" max="3400" value="1462" step="1"><span id="sector"></span></div></section>
+<section id="inspection" aria-labelledby="inspectHead"><div class="inspectHead"><h2 id="inspectHead">At the cursor</h2><span id="inspectTime"></span></div><div id="values"></div></section>
+<div class="status"><span id="source">Simulated data · 100 Hz</span><span id="notice" role="status" aria-live="polite"></span></div>
+<div class="mobileDocs"><a href="/#map">System map</a><a href="/#logs">Working with logs</a><a href="/#resources">Studies and references</a></div>
+</main></div>
+<dialog id="openDialog"><form id="openForm"><div class="dialogHead"><h2>Open local log</h2><button type="button" id="closeDialog" aria-label="Close">×</button></div><p>CSV or Parquet with session time in seconds (<code>time_s</code>) and numeric channels. The file stays on this computer.</p>
+<label for="path">File path</label><input id="path" name="path" spellcheck="false" autocomplete="off" placeholder="C:\Data\session.parquet">
+<div class="dialogTools"><button type="button" id="browse">Browse…</button><button type="submit" class="primary">Open file</button></div><p id="openStatus" role="status"></p></form></dialog>
+</body></html>

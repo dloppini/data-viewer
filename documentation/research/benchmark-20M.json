@@ -1,0 +1,61 @@
+{
+  "rows": 20000000,
+  "columns": 12,
+  "python": "3.12.6",
+  "os": "Windows-10-10.0.19045-SP0",
+  "cpu": "Intel64 Family 6 Model 158 Stepping 9, GenuineIntel",
+  "threads": 8,
+  "ram_gib": 31.9,
+  "versions": {
+    "numpy": "2.5.5",
+    "pyarrow": "26.0.1",
+    "polars": "2.1.0",
+    "duckdb": "2.0.1",
+    "psutil": "7.2.2"
+  },
+  "measurements": {
+    "arrow": {
+      "seconds": 31.35696810000809,
+      "bytes": 746399960,
+      "rows": 20000000,
+      "peak_working_set_mib": 278.6
+    },
+    "polars": {
+      "seconds": 5.770012799999677,
+      "bytes": 855668071,
+      "rows": 20000000,
+      "peak_working_set_mib": 1010.8
+    },
+    "duckdb": {
+      "seconds": 11.921406799985562,
+      "bytes": 718797118,
+      "rows": 20000000,
+      "peak_working_set_mib": 1333.7
+    },
+    "pipeline": {
+      "first_s": 9.023357899975963,
+      "reopen_ms": 8.83940001949668,
+      "all": {
+        "median_ms": 929.5874999952503,
+        "first_ms": 892.0916999923065,
+        "rows": 20000000,
+        "groups": 306,
+        "points": 1600,
+        "json_bytes": 29224
+      },
+      "zoom": {
+        "median_ms": 12.045099982060492,
+        "first_ms": 12.045099982060492,
+        "rows": 3000,
+        "groups": 1,
+        "points": 1600,
+        "json_bytes": 30113
+      },
+      "groups": 306,
+      "rows": 20000000,
+      "cache_bytes": 855668071,
+      "peak_working_set_mib": 1096.3
+    }
+  },
+  "csv_bytes": 1713735511
+}

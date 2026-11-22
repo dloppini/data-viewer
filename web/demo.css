@@ -1,0 +1,85 @@
+.lab{max-width:1280px;margin:0 auto;padding:26px clamp(16px,4vw,54px) 40px}
+.brandSection{font-weight:400;color:var(--muted)}
+#returnLink{display:inline-flex;align-items:center;min-height:44px;color:var(--muted);text-decoration:none;font-weight:600}
+#returnLink:hover{text-decoration:underline;color:var(--ink)}
+.lab nav{margin:0}
+.families{display:flex;align-items:stretch;gap:10px;border-bottom:1px solid var(--border)}
+.families a,#choices a{display:flex;align-items:center;min-height:44px;text-decoration:none}
+.families a{border-bottom:3px solid transparent;color:var(--muted);padding:6px 12px;font-weight:600}
+.families a:first-child{margin-left:-12px}
+.families a[aria-current]{border-color:var(--accent);color:var(--ink)}
+.families a:hover,#choices a:hover{color:var(--accent)}
+.labLayout{display:grid;grid-template-columns:174px minmax(0,1fr);gap:clamp(22px,4vw,64px);padding-top:38px}
+.labRail h2{font-size:13px;color:var(--muted);font-weight:600;margin:2px 0 10px;padding-left:10px}
+#choices{display:grid;gap:3px}
+.chartSelect{display:none}
+@media(min-width:741px){#choices:has(+.chartSelect){max-height:calc(100vh - 220px);overflow-y:auto;scrollbar-width:thin}}
+#choices a{padding:5px 10px;border-radius:6px;color:var(--muted)}
+#choices a[aria-current=page]{color:var(--accent)}
+#specimen{min-width:0}
+#instruction{margin:9px 0 22px;color:var(--muted);max-width:72ch;line-height:1.55}
+.lab #board{margin:0}
+.lab figcaption{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;padding:17px 20px}
+.lab figcaption strong{font-size:17px;font-weight:650;letter-spacing:-.02em}
+.lab figcaption span,.lab .scale,.lab .sampleLabel{color:var(--muted);font-size:12px}
+#graph{min-width:0;position:relative}
+#graph[data-chart]{min-height:310px}
+#controls{display:flex;align-items:center;gap:12px 18px;flex-wrap:wrap;padding:11px 20px;border-top:1px solid var(--border);background:var(--wash)}
+#controls label{display:flex;align-items:center;gap:8px;font-weight:550}
+#controls input[type=number]{width:6.5em}
+#controls input[type=range]{width:clamp(95px,25vw,290px);accent-color:var(--accent);height:36px}
+#controls output{margin-left:auto}
+#controls button,#controls input,#controls select{min-height:40px}
+.meterSpec{max-width:630px;margin:auto;padding:22px clamp(18px,4vw,48px) 46px}
+.meterSpec .measure{display:block;font-size:clamp(48px,7vw,84px);letter-spacing:-.055em;line-height:1.2}
+.meterSpec .measure small{font-size:.44em;letter-spacing:0;color:var(--muted);margin-left:6px}
+.meterSpec meter{display:block;width:100%;height:32px;accent-color:var(--series);margin:10px 0 4px}
+.meterSpec meter::-webkit-meter-bar{border:0;background:var(--wash);border-radius:20px}
+.meterSpec meter::-webkit-meter-optimum-value{background:var(--series);border-radius:20px}
+.meterSpec meter::-moz-meter-bar{background:var(--series);border-radius:20px}
+.scale{display:flex;justify-content:space-between}
+.sampleTable{border-collapse:collapse;width:100%;text-align:right}
+.sampleTable th,.sampleTable td{padding:10px clamp(8px,2.5vw,30px);border-top:1px solid var(--border)}
+.sampleTable th{color:var(--muted);font-size:13px;font-weight:600}
+.sampleTable :is(th,td):first-child{text-align:left}
+.sampleTable tr.current{background:var(--select);font-weight:650}
+#status{margin-top:12px;color:var(--muted)}
+#status:empty{display:none}
+.uplot{color:var(--muted)}
+.uplot .u-legend{font:12px/1.3 var(--font);margin:0 0 6px}
+.uplot canvas{display:block}
+@media(max-width:740px){
+  .lab{padding:8px 12px 24px}
+  .families{gap:0;justify-content:space-between}
+  .families a{padding:6px 4px;font-size:13px}
+  .families a:first-child{margin-left:0}
+  .labLayout{display:block;padding-top:12px}
+  .labRail{margin-bottom:16px}
+  .labRail h2{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  #choices{display:flex;flex-wrap:wrap;gap:2px}
+  #choices a{font-size:13px;padding:4px 9px}
+  #choices:has(+.chartSelect){display:none}
+  .chartSelect{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+  .chartSelect select{color:var(--ink);max-width:80%}
+  #instruction{margin:7px 0 16px}
+  .lab figcaption{padding:13px 12px}
+  #controls{padding:9px 12px;gap:6px 12px}
+  #controls input,#controls select,#controls button{min-height:44px}
+  #controls output{margin-left:0}
+  .meterSpec{padding-top:10px;padding-bottom:28px}
+}
+@media(max-width:380px){#choices a{padding-inline:6px}}
+.componentLibrary{max-width:1420px;margin:0 auto;padding:22px clamp(16px,3vw,50px) 32px}
+.libraryBar,.libTitle,.libraryFooter,.libraryFooter .actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px 22px}
+.libraryBar{border-bottom:1px solid var(--border);padding-bottom:16px}
+.libraryBar label{display:grid;gap:3px;color:var(--muted);font-size:12px}
+.libraryBar select{font-size:14px;color:var(--ink);min-width:110px}
+.libTitle{margin:20px 0 4px;gap:10px;align-items:baseline}
+.libTitle h1{font-size:clamp(26px,2.5vw,38px)}
+.libTitle code{color:var(--muted);font-size:12px}
+.componentLibrary #caption{color:var(--muted);margin-bottom:16px}
+#preview{--dv-height:clamp(320px,51vh,600px);min-width:0}
+.libraryFooter{align-items:flex-start;justify-content:space-between;margin-top:18px;padding-top:10px;border-top:1px solid var(--border)}
+.libraryFooter details{min-width:0;max-width:100%;flex:1}.libraryFooter summary{justify-content:start;gap:12px;width:max-content}
+.libraryFooter p,.libraryFooter pre{color:var(--muted);font-size:13px}.libraryFooter pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.libraryFooter .actions,.topTools{gap:12px}.libraryFooter a,.topTools a{color:var(--muted);font-size:13px}

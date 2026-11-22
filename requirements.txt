@@ -1,0 +1,5 @@
+numpy==2.5.5
+plotly==7.1.0
+pyarrow==26.0.1
+polars==2.1.0
+bokeh==3.10.2

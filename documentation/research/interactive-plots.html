@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Interactive plots · Data Viewer</title>
+<style>
+*{box-sizing:border-box}html{color-scheme:light dark;--bg:#fafaf7;--fg:#1b2926;--sub:#4e645e;--line:#c8d1cc;--plot:#fcfdfb;--a:#17634c;--b:#9e4930}
+@media(prefers-color-scheme:dark){html{--bg:#192320;--fg:#e9efe9;--sub:#bbc9c1;--line:#415749;--plot:#1d2925;--a:#9ed4b1;--b:#ffb292}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 "Segoe UI",sans-serif}main{max-width:1000px;margin:auto;padding:24px clamp(14px,4vw,50px) 40px}header,.tools,.readout{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px}header{justify-content:space-between;padding-bottom:9px;border-bottom:1px solid var(--line)}h1{font:500 clamp(34px,5vw,54px)/1.08 Georgia,serif;letter-spacing:-.035em;margin:22px 0 8px}h2{font-size:21px;margin:24px 0 5px}h3{font-size:16px;margin:0}p{max-width:78ch;margin:6px 0 12px}a{color:var(--a);text-underline-offset:3px}
+.study{border-block:1px solid var(--line);background:var(--plot);padding:12px 0 7px}.tools{gap:6px 12px}.tools label{display:inline-flex;align-items:center;gap:5px;font-size:14px}button,input,select{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:5px 8px;min-height:34px}input{width:6em}button,select{cursor:pointer}button:hover{border-color:var(--a)}:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+#trace{height:245px;min-width:0}.readout{border-top:1px solid var(--line);padding-top:8px;font-variant-numeric:tabular-nums}.readout output{font-weight:600}.readout small,#density,.note{color:var(--sub)}#density{font-size:13px;margin:4px 0 0}article{padding:10px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(140px,1fr) 3fr;gap:12px}article p{margin:0}.note{font-size:14px}footer{margin-top:22px}
+@media(max-width:620px){main{padding:16px 12px 30px}button,input,select{min-height:44px}article{display:block}article h3{margin-bottom:4px}.tools{gap:5px 9px}#trace{height:235px}.readout{gap:5px 12px}}
+.readout span:nth-child(-n+2)::before{content:"";display:inline-block;width:8px;height:8px;margin-right:6px;background:var(--a);transform:rotate(45deg)}.readout span:nth-child(2)::before{background:var(--b);border-radius:50%}
+</style></head><body><main><header><strong>Data Viewer</strong><a href="../dashboard.html#map">Software architecture</a></header>
+<h1>Measuring on an interactive plot</h1>
+<p>HTML provides the worksheet, controls and inspector. A plotting library draws traces and maps gestures to coordinates. To measure a value, return to the original sample. The nearest point <em>on the screen</em> can have a different timestamp from the nearest sample <em>in the log</em>.</p>
+<h2>Inspect a braking event</h2><p>Select A or B and click anywhere in the plot to place the cursor. Drag to zoom. Use the keyboard to move either time one sample at a time. The difference is always <strong>B − A</strong>.</p>
+<section class="study" aria-label="Measurement demo using simulated telemetry">
+<div class="tools"><label>Click to place <select id="target"><option>A</option><option>B</option></select></label>
+<label>A (s) <input id="A" type="number" min="0" max="20" step=".01" value="4.25"></label><label>B (s) <input id="B" type="number" min="0" max="20" step=".01" value="8.10"></label>
+<button id="zoom" type="button">Zoom A–B</button><button id="reset" type="button">Full range</button></div>
+<div id="trace" role="img" aria-label="Simulated speed over time with two selected samples"></div>
+<div class="readout" aria-live="polite"><span>A: <output id="valA"></output></span><span>B: <output id="valB"></output></span><span>Δt: <output id="dt"></output></span><span>Δv: <output id="dv"></output></span></div>
+<p id="density" role="status">Loading the local library…</p></section>
+<p class="note">This standalone example uses 20 seconds of synthetic 100 Hz speed data rounded to 0.1 km/h. The trace shows up to 80 extrema to demonstrate display reduction. Markers, HTML readouts and differences use the full series in memory. For large logs the original series stays on disk.</p>
+<h2>Choosing a plotting tool</h2>
+<article><h3><a href="https://plotly.com/javascript/plotlyjs-events/">Plotly.py + Plotly.js</a></h3><p><b>Python figure definitions and a browser demo.</b> Plotly supports traces, scatter plots, histograms, maps and FFT displays. Its browser interactions include hover, zoom, pan, box and lasso selection. A click gives the <a href="https://plotly.com/javascript/click-events/">axis coordinate</a>. The viewer supplies persistent cursors, differences and the lookup from a displayed point to a source row.</p></article>
+<article><h3><a href="https://docs.bokeh.org/en/latest/docs/user_guide/interaction/tools.html">Bokeh</a></h3><p><b>A Python option for linked plots.</b> Tools include pan, zoom, crosshair, tap, box and lasso. Two plots can <a href="https://docs.bokeh.org/en/latest/docs/user_guide/interaction/linking.html">share an axis or a selection</a>. For example, highlight the time samples selected in a scatter plot. A shared data source must represent the same original rows. Indices from independently reduced series can refer to different samples. Browser controls work in <a href="https://docs.bokeh.org/en/latest/docs/user_guide/output/embed.html">standalone HTML</a>. Python callbacks need a running server.</p></article>
+<article><h3><a href="https://github.com/leeoniya/uPlot">uPlot</a></h3><p><b>A candidate for multiple time-series traces.</b> uPlot draws on Canvas 2D and supports zoom and synchronised cursors. Python can supply its data. Panning and richer touch gestures require integration. A representative multichannel worksheet is the appropriate workload for a comparison with Plotly.</p></article>
+<article><h3><a href="https://pyqtgraph.readthedocs.io/en/latest/api_reference/graphicsItems/plotdataitem.html">PyQtGraph + PySide6</a></h3><p><b>A native desktop option.</b> The <a href="https://pyqtgraph.readthedocs.io/en/latest/api_reference/graphicsItems/viewbox.html">ViewBox</a> supports pan, zoom, linked axes and coordinate conversion. Curves support clipping and downsampling. Movable lines and regions suit cursor-based measurements. This option uses a Qt frontend. Qt can also host HTML through <a href="https://doc.qt.io/qtforpython-6/PySide6/QtWebEngineWidgets/QWebEngineView.html">QWebEngineView</a>, which is optional for a local web application.</p></article>
+<article><h3><a href="https://datashader.org/getting_started/Interactivity.html">Datashader</a></h3><p><b>An option for very dense scatter plots.</b> Datashader aggregates density per pixel. Each coloured cell represents a group of samples. Inspect its count and query the underlying data to recover individual values. A separate layer handles interaction.</p></article>
+<h2>From gesture to data</h2>
+<p><strong>Traces.</strong> Hover gives a quick reading. Click to pin a time. To recover an original sample, look up its timestamp, value and stable identifier in the source. The index of a reduced point is local to that trace. For asynchronous channels, show the offset from the cursor. In a gap, report “No sample” beyond the stated tolerance.</p>
+<p><strong>Scatter plots.</strong> Retain the lap, channel and sample identity when picking a point. A lasso on an overview selects displayed points. To compute statistics for <em>all</em> samples inside the selection, apply the polygon to the original data. <strong>Histograms and FFTs.</strong> Identify the bin range or the frequency and analysis window, respectively.</p>
+<p><strong>Controls.</strong> Keep inspection, pan and zoom distinct. Preserve zoom and A/B cursors through style changes. Link laps by distance or elapsed time. Provide explicit zoom and reset controls for input devices without a scroll wheel.</p>
+<h2>Local viewer verification</h2>
+<p id="evidence">In a test using a synthetic 5M-row, 100 Hz Parquet file, the overview drew 1,674 points. Dragging to zoom read 149,614 rows from three Parquet groups and kept 1,674 points on screen. The test verified windowed reads. The main viewer did not persist an original-sample selection for imported logs in that test.</p>
+<p>In a separate instance using Plotly.js 4.1.1, an experimental click handler requested the ±11 ms window around the pointer time from the existing backend. With this known 100 Hz signal, it selected the nearest original timestamp. Clicking at <b>6,318.622 s</b> returned <b>6,318.620 s</b> and 101.87 km/h. The nearest timestamp on the reduced trace was <b>6,309.840 s</b>.</p>
+<p class="note">Nine overview clicks were tested in local Chrome 157 at 1440 × 900. All values matched the source. Each click read one row group. Median time from handler to result was 11.5 ms, including local HTTP and lookup. Drawing and physical mouse latency were outside the measurement. Irregular timestamps require a lookup that accounts for their spacing.</p>
+<p class="note">The example demonstrates an interaction using the existing runtime dependencies. File loading and its measurements are described in the <a href="data-loading.html">data loading study</a>.</p>
+</main>
+<script>const plotlyReady=new Promise((resolve,reject)=>{const script=document.createElement("script");script.src=location.protocol==="file:"?"../../.venv/Lib/site-packages/plotly/package_data/plotly.min.js":"/plotly.min.js";script.onload=resolve;script.onerror=reject;document.head.append(script)});</script>
+<script>
+const el=id=>document.getElementById(id);
+const media=matchMedia("(prefers-color-scheme: dark)");
+const rate=100;
+const speed=Array.from({length:2001},(_,i)=>{
+  const t=i/rate;
+  return Math.round(10*(178-94*Math.exp(-((t-7)**2)/4.5)-48*Math.exp(-((t-15)**2)/2)+2.2*Math.sin(8*t)))/10;
+});
+const pins={A:425,B:810};
+const fmt=(n,d)=>n.toLocaleString("en-GB",{minimumFractionDigits:d,maximumFractionDigits:d});
+function envelope(start,end){
+  const first=Math.max(0,Math.ceil(start*rate)),last=Math.min(speed.length-1,Math.floor(end*rate));
+  const count=Math.max(0,last-first+1),indices=[];
+  if(count<=80){for(let i=first;i<=last;i++)indices.push(i);}
+  else for(let bin=0;bin<40;bin++){
+    const a=first+Math.floor(bin*count/40),b=first+Math.floor((bin+1)*count/40);
+    let lo=a,hi=a;
+    for(let i=a+1;i<b;i++){if(speed[i]<speed[lo])lo=i;if(speed[i]>=speed[hi])hi=i;}
+    if(lo===hi)indices.push(lo);else indices.push(Math.min(lo,hi),Math.max(lo,hi));
+  }
+  return {x:indices.map(i=>i/rate),y:indices.map(i=>speed[i]),count};
+}
+const color=role=>getComputedStyle(document.documentElement).getPropertyValue("--"+role).trim();
+let visible=[0,20];
+function reading(){
+  for(const key of ["A","B"]){el(key).value=(pins[key]/rate).toFixed(2);el("val"+key).textContent=fmt(speed[pins[key]],1)+" km/h";}
+  el("dt").textContent=fmt((pins.B-pins.A)/rate,2)+" s";
+  el("dv").textContent=fmt(speed[pins.B]-speed[pins.A],1)+" km/h";
+  el("zoom").disabled=pins.A===pins.B;
+}
+function density(series){el("density").textContent=fmt(series.count,0)+" samples in view · "+series.x.length+" plotted points · cursors use original samples";}
+function pinTrace(key){const i=pins[key];return {type:"scatter",mode:"markers",x:[i/rate],y:[speed[i]],name:key,marker:{color:color(key.toLowerCase()),size:10,symbol:key==="A"?"diamond":"circle"},hoverinfo:"skip"};}
+async function movePin(key,t){
+  if(!Number.isFinite(t)||t<0||t>20){reading();return;}
+  pins[key]=Math.round(t*rate);reading();
+  const i=pins[key];
+  await Plotly.restyle(el("trace"),{x:[[i/rate]],y:[[speed[i]]]},[key==="A"?1:2]);
+}
+async function mount(){
+  reading();const gd=el("trace"),s=envelope(...visible);density(s);
+  await Plotly.newPlot(gd,[{type:"scatter",mode:"lines",x:s.x,y:s.y,line:{color:color("a"),width:2},hovertemplate:"Displayed point: %{x:.2f} s · %{y:.1f} km/h<extra></extra>"},pinTrace("A"),pinTrace("B")],{
+    clickanywhere:true,dragmode:"zoom",showlegend:false,paper_bgcolor:color("plot"),plot_bgcolor:color("plot"),font:{family:"Segoe UI, sans-serif",color:color("sub")},
+    margin:{l:48,r:10,t:10,b:43},xaxis:{title:{text:"Time (s)"},range:visible.slice(),gridcolor:color("line")},yaxis:{title:{text:"km/h"},range:[70,190],fixedrange:true,gridcolor:color("line")}
+  },{responsive:true,displayModeBar:false,scrollZoom:false,doubleClick:false});
+  gd.on("plotly_click",event=>{const t=event.xvals?.[0];if(Number.isFinite(t))movePin(el("target").value,t);});
+  gd.on("plotly_relayout",async change=>{
+    if(!("xaxis.range" in change||"xaxis.range[0]" in change||change["xaxis.autorange"]))return;
+    visible=gd.layout.xaxis.range.slice();
+    const s=envelope(...visible);density(s);await Plotly.restyle(gd,{x:[s.x],y:[s.y]},[0]);
+  });
+  for(const key of ["A","B"])el(key).onchange=()=>movePin(key,el(key).valueAsNumber);
+  el("reset").onclick=()=>Plotly.relayout(gd,{"xaxis.range":[0,20]});
+  el("zoom").onclick=()=>Plotly.relayout(gd,{"xaxis.range":[Math.min(pins.A,pins.B)/rate,Math.max(pins.A,pins.B)/rate]});
+  media.addEventListener("change",()=>{Plotly.relayout(gd,{paper_bgcolor:color("plot"),plot_bgcolor:color("plot"),"font.color":color("sub"),"xaxis.gridcolor":color("line"),"yaxis.gridcolor":color("line")});Plotly.restyle(gd,{"line.color":color("a")},[0]);Plotly.restyle(gd,{"marker.color":[color("a"),color("b")]},[1,2]);});
+}
+plotlyReady.then(mount).catch(()=>{el("density").textContent="The plot requires Plotly from the local project environment. The study is available below.";});
+</script></body></html>

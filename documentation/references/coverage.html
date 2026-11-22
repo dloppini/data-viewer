@@ -1,0 +1,181 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MoTeC coverage · Data Viewer</title><link rel="stylesheet" href="../../web/style.css"><link rel="stylesheet" href="../../web/dashboard.css"></head><body class="guide"><main class="referencePage"><a href="../dashboard.html#resources">← Dashboard references</a><h1>MoTeC i2 Pro sources and worksheet coverage</h1>
+<p>The primary reference is the complete i2 Pro help for <strong>version 1.1.6.0904 installed on this PC</strong>. The review covered the index and the Components topics on workbooks, worksheets, overlay laps, linked cursors, channels, reports, maps and instruments. The original publications are available locally for personal reference. The viewer uses original code, drawings, circuit data and screenshots. Coverage is tied to these references and to the worksheet features listed below.</p>
+<h2>Offline references</h2>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Source and purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="MoTeC/i2help.chm">Complete help</a></td>
+<td>From the installed i2 Pro at <code>C:\Program Files\MoTeC\i2\1.1\Help\i2help.chm</code>. Open <strong>Components</strong> in the contents for operating instructions.</td>
+</tr>
+<tr>
+<td><a href="MoTeC/Release%20Notes.htm">Release notes</a></td>
+<td>From the same installation. Includes features introduced after the help index, including Colour Graph and Acceleration Report.</td>
+</tr>
+<tr>
+<td><a href="MoTeC/i2%20Feature%20Guide.pdf">Feature Guide 1.1.4</a></td>
+<td>Component updates, including Race Control and acceleration reports. <a href="https://assets.motec.com.au/strapi/i2_V1_1_4_Feature_Guide_0d03b00fa8.pdf">MoTeC original</a></td>
+</tr>
+<tr>
+<td><a href="MoTeC/i2%20API%20User%20Guide.pdf">API User Guide</a></td>
+<td>API objects and licensing. The prototype runs independently of the licensed API. <a href="https://assets.motec.com.au/strapi/i2_API_User_Guide_330ed28c83.pdf">MoTeC original</a></td>
+</tr>
+<tr>
+<td><a href="MoTeC/Interpreter%20User%20Manual.pdf">Interpreter User Manual</a></td>
+<td>Historical manual for Interpreter, the predecessor to i2. <a href="https://assets.motec.com.au/strapi/Interpreter_User_Manual_d559d1fca0.pdf">MoTeC original</a></td>
+</tr>
+<tr>
+<td><a href="MoTeC/i2%20Training%20Seminar.pdf">i2 Training Seminar</a></td>
+<td>MoTeC’s 2008 training material covers workflows and component families. <a href="https://precisionautoresearch.com/DOWNLOADS/Motec%20Interpreter/i2%20Training%20Seminar%202008.pdf">Copy hosted by Precision AutoResearch</a></td>
+</tr>
+<tr>
+<td><a href="MoTeC/i2%20Brochure.pdf">i2 brochure</a></td>
+<td>Product overview. <a href="https://precisionautoresearch.com/ECU_DATA/MoTeC/MoTeC_Data/i2%20Brochure.pdf">MoTeC brochure hosted by Precision AutoResearch</a></td>
+</tr>
+</tbody>
+</table>
+<p>MoTeC lists its three official PDF manuals under <strong>User Manuals &amp; Guides</strong> on the i2 product page. Its channel support article explains how traces are grouped by unit. <a href="https://www.motec.com.au/products/I2">Standard/Pro feature comparison</a> · <a href="https://motec.zendesk.com/hc/en-gb/articles/13650492173327-Why-does-my-data-not-show-up-in-i2">Channel grouping guidance</a></p>
+<h2>From components to worksheets</h2>
+<table>
+<thead>
+<tr>
+<th>Documented family</th>
+<th>Viewer worksheet</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time/Distance, tiled and overlaid</td>
+<td>Channel history</td>
+<td>Two speed traces overlaid, pedals in a separate pane, a time/distance axis and a cursor.</td>
+</tr>
+<tr>
+<td>Time Variance</td>
+<td>Timing Story</td>
+<td>Cumulative time difference at equal distance and at sector boundaries. “Timing Story” is the viewer’s name for this sheet.</td>
+</tr>
+<tr>
+<td>Outing Graph / Colour Graph</td>
+<td>Session history / Time colour graph</td>
+<td>Full laps in session context and speed encoded by colour over time.</td>
+</tr>
+<tr>
+<td>Scatter Plot</td>
+<td>G–G scatter plot</td>
+<td>Lateral and longitudinal acceleration for two laps.</td>
+</tr>
+<tr>
+<td>Histogram / Suspension Velocity Histogram</td>
+<td>Speed histogram / Suspension velocity histogram</td>
+<td>Time distributions of vehicle speed and front-left damper shaft velocity.</td>
+</tr>
+<tr>
+<td>FFT</td>
+<td>FFT spectrum</td>
+<td>Amplitude spectrum of a uniformly sampled synthetic channel using the viewer’s estimator.</td>
+</tr>
+<tr>
+<td>Mixture Map</td>
+<td>Mixture map</td>
+<td>Lambda against engine speed by load band.</td>
+</tr>
+<tr>
+<td>Track Report / Rainbow Track</td>
+<td>Track report / Rainbow track map</td>
+<td>Sector minima at their track positions and speed along the centreline.</td>
+</tr>
+<tr>
+<td>Track Position / GPS Track</td>
+<td>Track position / GPS driving lines</td>
+<td>Positions at equal elapsed time and simulated driving lines in local coordinates.</td>
+</tr>
+<tr>
+<td>Race Control and position telemetry</td>
+<td>Race Control</td>
+<td>Multiple simulated vehicle positions in a replay.</td>
+</tr>
+<tr>
+<td>Section Time / Channel / Acceleration Report</td>
+<td>Sector times / Channel statistics / Acceleration times</td>
+<td>Splits and deltas, whole-lap statistics and speed-to-speed intervals.</td>
+</tr>
+<tr>
+<td>Gauges / Channel Status</td>
+<td>Dashboard / Channel status</td>
+<td>Dial, numeric display, bar, steering wheel, indicator and values at the cursor.</td>
+</tr>
+</tbody>
+</table>
+<h2>Plot coverage reviewed on 21 November 2026</h2>
+<p>The public comparison identifies worksheet families. The installed help, release notes and Feature Guide identify additional plot modes. The following 18 examples each have a separate worksheet and HTML element.</p>
+<table>
+<thead>
+<tr>
+<th>i2 Pro feature</th>
+<th>Examples added</th>
+<th>What to inspect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scatter Plot</td>
+<td>G–G density, Three-channel scatter plot, Bubble scatter plot, Braking scatter plot</td>
+<td>Cell occupancy, colour by speed, area by brake input and a filter above 10% brake. Density is calculated on the full lap before display sampling.</td>
+</tr>
+<tr>
+<td>Scatter Plot interval average and regression</td>
+<td>Interval average, Linear regression, Polynomial regression</td>
+<td>Each example has its own curve. Interval averages use equally spaced X bins. Regression coefficients are fitted on the original samples. <a href="https://assets.motec.com.au/strapi/i2_V1_1_4_Feature_Guide_0d03b00fa8.pdf#page=9">Feature Guide, pp. 8–9</a></td>
+</tr>
+<tr>
+<td>Histogram with a colour channel</td>
+<td>Two-channel histogram</td>
+<td>Height shows the percentage of time. Colour shows the mean throttle opening in each bin on a 0–100% scale.</td>
+</tr>
+<tr>
+<td>Multichannel suspension velocity histogram</td>
+<td>Damper velocity zones, Four-corner suspension</td>
+<td>Time in four zones, or four wheel distributions using the same intervals. The example uses a 25 mm/s threshold.</td>
+</tr>
+<tr>
+<td>FFT frequency response estimate</td>
+<td>Frequency response</td>
+<td>Gain in dB and phase in degrees for a simulated first-order rig. H1 estimate, 512-sample Hann windows with 50% overlap, sampled at 100 Hz. <a href="MoTeC/Release%20Notes.htm">Release notes</a></td>
+</tr>
+<tr>
+<td>Mixture Map</td>
+<td>Mixture trends</td>
+<td>Three lambda curves by load band over a common set of rpm bins. Empty bins break the line.</td>
+</tr>
+<tr>
+<td>Channel Bits</td>
+<td>Channel bits</td>
+<td>Three digital traces from one synthetic status word. Every transition is retained. <a href="MoTeC/Release%20Notes.htm">Release notes</a></td>
+</tr>
+<tr>
+<td>Time Report and Channel Report charts</td>
+<td>Sector time trends, Channel trends</td>
+<td>Individual sector times or minimum, mean and maximum speed by lap. <a href="https://assets.motec.com.au/strapi/i2_V1_1_4_Feature_Guide_0d03b00fa8.pdf#page=23">Feature Guide, p. 22</a></td>
+</tr>
+<tr>
+<td>Two-lap Rainbow Track Map</td>
+<td>Side-by-side rainbow maps</td>
+<td>The active and reference laps share orientation and colour scale. The workbook cursor compares positions at the same elapsed time.</td>
+</tr>
+<tr>
+<td>Telemetry Track Position and Telemetry GPS Track</td>
+<td>Distance-based track replay, GPS track replay</td>
+<td>Distance positions the vehicles on the centreline. The GPS example interpolates local coordinates from four simulated 5 Hz receivers and shows a three-second trail.</td>
+</tr>
+</tbody>
+</table>
+<p>For suspension, track maps, histograms and mixture maps, see <strong>Components</strong> in the <a href="MoTeC/i2help.chm">installed help</a>. Density, point size and frequency response are also documented in the <a href="MoTeC/Release%20Notes.htm">release notes</a>.</p>
+<h2>Scope</h2>
+<p>These examples cover the worksheet families and plot modes listed above. The 2D/3D Math table definition views belong to the calibration editor. Workspace editing, multi-monitor configuration, custom formulae, Excel integration, synchronised video, live telemetry, Picture/WebView components and licensed .ld import are outside the prototype. Specialist worksheets use the simulated session. Imported logs support numeric time histories and configurable XY scatter. The supplied file determines which channels, units and coordinates are available.</p>
+</main></body></html>
